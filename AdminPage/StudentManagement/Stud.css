@@ -1,0 +1,82 @@
+:root {
+  --blue: #2563eb; --blue-dark: #1d4ed8; --blue-soft: #eaf1ff;
+  --bg: #f4f7fb; --card: #fff; --text: #1e293b; --muted: #64748b; --line: #e2e8f0;
+  --green-bg: #dcfce7; --green: #166534;
+  --red-bg: #fee2e2; --red: #991b1b;
+  --amber-bg: #fef3c7; --amber: #92400e;
+}
+* { box-sizing: border-box; margin: 0; }
+body { display: flex; min-height: 100vh; background: var(--bg); color: var(--text);
+  font: 14px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+ 
+/* Sidebar */
+.sidebar { width: 230px; background: var(--card); border-right: 1px solid var(--line);
+  padding: 20px 14px; display: flex; flex-direction: column; gap: 24px; position: sticky; top: 0; height: 100vh; }
+.brand { display: flex; align-items: center; gap: 10px; padding: 0 6px; }
+.brand small { display: block; color: var(--muted); font-size: 12px; }
+.logo { width: 34px; height: 34px; border-radius: 8px; background: var(--blue); color: #fff;
+  display: grid; place-items: center; font-weight: 700; }
+nav { display: flex; flex-direction: column; gap: 2px; flex: 1; }
+.sidebar a { color: var(--muted); text-decoration: none; padding: 9px 12px; border-radius: 8px; }
+.sidebar a:hover { background: var(--bg); color: var(--text); }
+.sidebar a.active { background: var(--blue-soft); color: var(--blue); font-weight: 600; }
+ 
+/* Content */
+.content { flex: 1; padding: 28px 32px; min-width: 0; }
+.page-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; margin-bottom: 20px; }
+h1 { font-size: 22px; }
+.page-head p { color: var(--muted); }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; }
+ 
+.btn { border: 0; border-radius: 8px; padding: 9px 16px; font: inherit; font-weight: 600; cursor: pointer; }
+.btn.primary { background: var(--blue); color: #fff; }
+.btn.primary:hover { background: var(--blue-dark); }
+.btn.ghost { background: var(--bg); color: var(--text); }
+:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+ 
+.toolbar { display: flex; gap: 10px; padding: 14px 16px; border-bottom: 1px solid var(--line); }
+.toolbar input { flex: 1; max-width: 340px; }
+input, select { font: inherit; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; background: #fff; color: var(--text); }
+ 
+/* Table */
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; min-width: 640px; }
+th, td { text-align: left; padding: 12px 16px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+th { color: var(--muted); font-weight: 600; font-size: 13px; background: #fafcff; }
+tbody tr:hover { background: #fafcff; }
+.empty { text-align: center; color: var(--muted); padding: 32px; }
+ 
+.badge { padding: 2px 10px; border-radius: 999px; font-size: 12px; font-weight: 600; }
+.badge.Active { background: var(--green-bg); color: var(--green); }
+.badge.Inactive { background: var(--red-bg); color: var(--red); }
+.badge.Pending { background: var(--amber-bg); color: var(--amber); }
+ 
+.link { background: none; border: 0; padding: 0 8px 0 0; font: inherit; font-weight: 600; color: var(--blue); cursor: pointer; }
+.link.danger { color: #dc2626; }
+.link:hover { text-decoration: underline; }
+ 
+/* Footer / pagination */
+.table-foot { display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; color: var(--muted); gap: 12px; flex-wrap: wrap; }
+.pager { display: flex; gap: 4px; }
+.pager button { min-width: 32px; height: 32px; border: 1px solid var(--line); background: #fff; border-radius: 6px; cursor: pointer; font: inherit; }
+.pager button.current { background: var(--blue); border-color: var(--blue); color: #fff; }
+.pager button:disabled { opacity: .4; cursor: default; }
+ 
+/* Modal */
+dialog { border: 0; border-radius: 12px; padding: 24px; width: min(440px, 92vw); box-shadow: 0 20px 50px rgba(15, 23, 42, .25); }
+dialog::backdrop { background: rgba(15, 23, 42, .45); }
+form { display: flex; flex-direction: column; gap: 14px; }
+form h2 { font-size: 18px; }
+label { display: flex; flex-direction: column; gap: 4px; font-weight: 600; font-size: 13px; flex: 1; }
+label input, label select { font-weight: 400; }
+.row { display: flex; gap: 12px; }
+.actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 4px; }
+.error { color: #dc2626; font-size: 13px; }
+ 
+@media (max-width: 760px) {
+  body { flex-direction: column; }
+  .sidebar { width: 100%; height: auto; position: static; flex-direction: row; flex-wrap: wrap; align-items: center; gap: 8px; }
+  nav { flex-direction: row; overflow-x: auto; flex-basis: 100%; order: 3; }
+  .sidebar a { white-space: nowrap; }
+  .content { padding: 20px 16px; }
+}
