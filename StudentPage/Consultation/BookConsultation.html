@@ -4,27 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consultation University - Student Portal</title>
-    <link rel="stylesheet" href="StudentStyle.css">
+    <link rel="stylesheet" href="BookConsultation.css">
 </head>
 <body>
 
-    <div class="sidebar">
+    <!-- Dark Overlay for Mobile Slide-out Drawer -->
+    <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+    <!-- Sidebar Navigation -->
+    <div class="sidebar" id="sidebar">
         <div class="brand">
-            🎓 Consultation Univ.
+            <span>🎓 Consultation Univ.</span>
+            <!-- Close icon for mobile menu -->
+            <button class="close-sidebar-btn" onclick="toggleSidebar()">✕</button>
         </div>
         <ul class="nav-menu">
-            <li class="nav-item active"><a href="Home.html">🏠 Home</a></li>
-            <li class="nav-item"><a href="BookConsultation.html">📅 Book Consultation</a></li>
-            <li class="nav-item"><a href="Appointment.html">📋 My Appointments</a></li>
-            <li class="nav-item"><a href="Queue.html">⏳ Consultation Queue</a></li>
-            <li class="nav-item"><a href="Help.html">❓ Help & Support</a></li>
-            <li class="nav-item" style="margin-top: auto;"><a href="Logout.html">🚪 Logout</a></li>
+            <li class="nav-item"><a href="/StudentPage/Home/Home.html">🏠 Home</a></li>
+            <li class="nav-item active"><a href="/StudentPage/Consultation/BookConsultation.html">📅 Book Consultation</a></li>
+            <li class="nav-item"><a href="/StudentPage/Appointment/Appointment.html">📋 My Appointments</a></li>
+            <li class="nav-item"><a href="/StudentPage/Queue/Queue.html">⏳ Consultation Queue</a></li>
+            <li class="nav-item"><a href="/StudentPage/Help/Help.html">❓ Help & Support</a></li>
+            <li class="nav-item" style="margin-top: auto;"><a href="/LOGIN/login.html">🚪 Logout</a></li>
         </ul>
     </div>
 
+    <!-- Main Content Area -->
     <div class="main-content">
+        <!-- Topbar -->
         <div class="topbar">
-            <div><strong>Student Portal</strong></div>
+            <div class="topbar-left">
+                <button class="hamburger-btn" onclick="toggleSidebar()">☰</button>
+                <strong>Student Portal</strong></div>
             <div class="user-profile">
                 <span>John Carlo S. Cruz</span>
                 <div class="avatar">JC</div>
@@ -33,28 +43,27 @@
 
         <div class="dashboard-container">
             <div class="header-title">
-                <h1>Book a consultation</h1>
+                <h1>Book a Consultation</h1>
                 <p>Select a professor and choose an available date and time for your consultation.</p>
             </div>
 
+            <!-- Booking Cards Grid -->
             <div class="booking-grid">
-                <div class="card">
-                    <div class="card-icon">📅</div>
-                    <div class="card-title">Book a Consultation</div>
-                    <div class="card-desc">Choose a professor/instructor and pick an available time slot that works for you.</div>
-                </div>
-
+                
+                <!-- Step 1: Select Professor -->
                 <div class="card">
                     <div class="card-icon">📋</div>
                     <div class="card-title">1. Select Professor</div>
                     <div id="prof-list" class="prof-selection-list">
-                        
+                        <!-- Populated dynamically via JS -->
                     </div>
                 </div>
+
+                <!-- Step 2: Choose Schedule & Details -->
                 <div class="card">
                     <div class="card-icon">⏳</div>
-                    <div class="card-title">Choose Schedule & Details</div>
-                    <form id="booking-form" class="booking-form">
+                    <div class="card-title">2. Choose Schedule & Details</div>
+                    <form id="booking-form" onsubmit="handleBooking(event)" class="booking-form">
                         <label for="date">Select Date:</label>
                         <input type="date" id="date" name="date" required>
 
@@ -68,5 +77,21 @@
                     </form>
                 </div>
 
+                <!-- Step 3: Confirmation Status -->
+                <div class="card">
+                    <div class="card-icon">✅</div>
+                    <div class="card-title">3. Confirmation Status</div>
+                    <div id="confirmation-message" class="confirmation-message">
+                        <div class="placeholder-text">
+                            <p>📋 Fill out the form details and click <strong>Book Consultation</strong> to review your confirmed appointment details here.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div> <!-- End of .booking-grid -->
+        </div>
+    </div>
+
+    <script src="BookConsultation.js"></script>
 </body>
 </html>

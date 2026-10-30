@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultation University - System Overview</title>
+    <link rel="stylesheet" href="SO.css">
+</head>
+<body>
+
+    <!-- Dark Overlay for Mobile Slide-out Drawer -->
+    <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+    <!-- Sidebar Navigation -->
+    <div class="sidebar" id="sidebar">
+        <div class="brand">
+            <span>🎓 Consultation Univ.</span>
+            <button class="close-sidebar-btn" onclick="toggleSidebar()">✕</button>
+        </div>
+        <ul class="nav-menu">
+            <li class="nav-item"><a href="/AdminPage/Dashboard/Dashboard.html">📊 Dashboard</a></li>
+            <li class="nav-item active"><a href="/AdminPage/SystemOverview/SO.html">🖥️ System Overview</a></li>
+            <li class="nav-item"><a href="/AdminPage/StudentManagement/Stud.html">👨‍🎓 Student Management</a></li>
+            <li class="nav-item"><a href="/AdminPage/ProfessorManagement/Prof.html">👨‍🏫 Professor Management</a></li>
+            <li class="nav-item"><a href="/AdminPage/ConsultSchedManagement/Consult.html">📅 Schedule Management</a></li>
+            <li class="nav-item" style="margin-top: auto;"><a href="/LOGIN/login.html">🚪 Logout</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+        <!-- Topbar -->
+        <div class="topbar">
+            <div class="topbar-left">
+                <button class="hamburger-btn" onclick="toggleSidebar()">☰</button>
+                <strong>Admin Portal</strong>
+            </div>
+            <div class="user-profile">
+                <span>System Administrator</span>
+                <div class="avatar">SA</div>
+            </div>
+        </div>
+
+        <div class="dashboard-container">
+            <div class="header-title">
+                <h1>System Overview</h1>
+                <p>Monitor real-time service status, system resource usage, recent logs, and server configuration details.</p>
+            </div>
+
+            <!-- Service Status Cards -->
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon">🌐</div>
+                    <div class="card-title">Web Server</div>
+                    <div class="card-desc">Status: <strong class="status-online">Online</strong></div>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">🗄️</div>
+                    <div class="card-title">Database Service</div>
+                    <div class="card-desc">Status: <strong class="status-online">Online</strong></div>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">⏳</div>
+                    <div class="card-title">Queue Engine</div>
+                    <div class="card-desc">Status: <strong class="status-online">Online</strong></div>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">🔔</div>
+                    <div class="card-title">Notification Service</div>
+                    <div class="card-desc">Status: <strong class="status-online">Online</strong></div>
+                </div>
+            </div>
+
+            <!-- System Resource Monitoring Banner -->
+            <div class="queue-banner">
+                <div class="queue-info">
+                    <h2>System Resource Health</h2>
+                    <p>Host: uni-consultation-server • Ubuntu 22.04 LTS</p>
+                </div>
+                <div class="queue-badge">
+                    <span>32%</span>
+                    <label>CPU Load</label>
+                </div>
+                <div class="queue-badge">
+                    <span>58%</span>
+                    <label>Memory Usage</label>
+                </div>
+                <div class="queue-badge">
+                    <span>43%</span>
+                    <label>Storage Space</label>
+                </div>
+            </div>
+
+            <!-- Server Information Table -->
+            <div class="card">
+                <div class="card-title" style="margin-bottom: 12px;">Server Information</div>
+                <div class="table-wrapper">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Parameter</th>
+                                <th>Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Hostname</td>
+                                <td>uni-consultation-server</td>
+                            </tr>
+                            <tr>
+                                <td>Operating System</td>
+                                <td>Linux (Ubuntu 22.04 LTS)</td>
+                            </tr>
+                            <tr>
+                                <td>System Version</td>
+                                <td>1.0.0 Static Release</td>
+                            </tr>
+                            <tr>
+                                <td>Uptime</td>
+                                <td>12 days, 4 hours</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Recent System Logs Table -->
+            <div class="card">
+                <div class="card-title" style="margin-bottom: 12px;">Recent System Logs</div>
+                <div class="table-wrapper">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Timestamp</th>
+                                <th>Event Description</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>10:30 AM</td>
+                                <td>User Login (Admin Portal)</td>
+                                <td><span class="badge active">Success</span></td>
+                            </tr>
+                            <tr>
+                                <td>10:05 AM</td>
+                                <td>Database Sync Executed</td>
+                                <td><span class="badge active">Success</span></td>
+                            </tr>
+                            <tr>
+                                <td>09:30 AM</td>
+                                <td>Queue Engine Auto-Processed</td>
+                                <td><span class="badge active">Success</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="SO.js"></script>
+</body>
+</html>

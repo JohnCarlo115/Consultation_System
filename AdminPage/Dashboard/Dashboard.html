@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultation University - Admin Dashboard</title>
+    <link rel="stylesheet" href="Dashboard.css">
+</head>
+<body>
+
+    <!-- Dark Overlay for Mobile Slide-out Drawer -->
+    <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+    <!-- Sidebar Navigation -->
+    <div class="sidebar" id="sidebar">
+        <div class="brand">
+            <span>🎓 Consultation Univ.</span>
+            <!-- Close icon for mobile menu -->
+            <button class="close-sidebar-btn" onclick="toggleSidebar()">✕</button>
+        </div>
+        <ul class="nav-menu">
+            <li class="nav-item active"><a href="/AdminPage/Dashboard/Dashboard.html">📊 Dashboard</a></li>
+            <li class="nav-item"><a href="/AdminPage/SystemOverview/SO.html">🖥️ System Overview</a></li>
+            <li class="nav-item"><a href="/AdminPage/StudentManagement/Stud.html">👨‍🎓 Student Management</a></li>
+            <li class="nav-item"><a href="/AdminPage/ProfessorManagement/Prof.html">👨‍🏫 Professor Management</a></li>
+            <li class="nav-item"><a href="/AdminPage/ConsultSchedManagement/Consult.html">📅 Schedule Management</a></li>
+            <li class="nav-item" style="margin-top: auto;"><a href="/LOGIN/login.html">🚪 Logout</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+        <!-- Topbar -->
+        <div class="topbar">
+            <div class="topbar-left">
+                <button class="hamburger-btn" onclick="toggleSidebar()">☰</button>
+                <strong>Admin Portal</strong>
+            </div>
+            <div class="user-profile">
+                <span>System Administrator</span>
+                <div class="avatar">SA</div>
+            </div>
+        </div>
+
+        <div class="dashboard-container">
+            <div class="header-title">
+                <h1>Welcome, Admin!</h1>
+                <p>Overview of the consultation system, user activity, and key information.</p>
+            </div>
+
+            <!-- Cards Grid -->
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon">👥</div>
+                    <div class="card-title">Total Students</div>
+                    <div class="card-desc">482 registered students across all departments.</div>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">👨‍🏫</div>
+                    <div class="card-title">Total Professors</div>
+                    <div class="card-desc">24 active faculty instructors managing availability.</div>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">📅</div>
+                    <div class="card-title">Today's Appointments</div>
+                    <div class="card-desc">18 scheduled consultations (12 completed, 6 upcoming).</div>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">⏳</div>
+                    <div class="card-title">Active Queues</div>
+                    <div class="card-desc">4 live consultation queues currently operational.</div>
+                </div>
+            </div>
+
+            <!-- System Status Banner -->
+            <div class="queue-banner">
+                <div class="queue-info">
+                    <h2>System Status Overview</h2>
+                    <p>All core services operational • Consultation Queue Engine Running</p>
+                </div>
+                <div class="queue-badge">
+                    <span>Active</span>
+                    <label>System Health</label>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="Dashboard.js"></script>
+</body>
+</html>

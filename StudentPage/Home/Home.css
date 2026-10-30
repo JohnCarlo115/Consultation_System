@@ -37,6 +37,7 @@
             display: flex;
             flex-direction: column;
             gap: 8px;
+            height: 100%;
         }
 
         .nav-item a {
@@ -202,3 +203,106 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
+        /* Desktop Defaults for Mobile Elements */
+.hamburger-btn,
+.close-sidebar-btn,
+.sidebar-overlay {
+    display: none;
+}
+
+/* ==========================================
+   MOBILE SLIDE-OUT DRAWER STYLES
+   ========================================== */
+@media screen and (max-width: 768px) {
+    .hamburger-btn {
+        display: block !important;
+        background: none;
+        border: none;
+        font-size: 1.6rem;
+        cursor: pointer;
+        color: #3182ce;
+        padding: 4px;
+        position: relative;
+        z-index: 10;
+    }
+
+    .close-sidebar-btn {
+        display: block !important;
+        background: none;
+        border: none;
+        font-size: 1.4rem;
+        color: #718096;
+        cursor: pointer;
+        padding: 4px;
+    }
+
+    .sidebar {
+        position: fixed !important;
+        top: 0 !important;
+        left: -280px !important; /* Positioned off-screen */
+        width: 260px !important;
+        height: 100vh !important;
+        background-color: #ffffff !important;
+        z-index: 1001 !important;
+        box-shadow: 4px 0 16px rgba(0, 0, 0, 0.15);
+        transition: left 0.3s ease-in-out !important;
+    }
+
+    .sidebar.open {
+        left: 0 !important; /* Slide into screen view */
+    }
+
+    .sidebar-overlay {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.4);
+        z-index: 999;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .sidebar-overlay.active {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
+
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+        display: flex;
+        min-height: 100vh;
+        background-color: #f4f6f9;
+        color: #2d3748;
+    }
+
+    /* Sidebar Layout */
+    .sidebar {
+        width: 260px;
+        background-color: #ffffff;
+        border-right: 1px solid #e2e8f0;
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        flex-shrink: 0;
+    }
+
+    /* Main Content takes remaining width */
+    .main-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+    }
+}
