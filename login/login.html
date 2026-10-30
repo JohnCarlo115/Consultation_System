@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultation University - System Portal Login</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+
+    <div class="login-card">
+        <div class="brand">🎓 Consultation Univ.</div>
+        <h2>Portal Sign In</h2>
+        <p>Select your account role and enter credentials to continue.</p>
+
+        <div id="error-message" class="error-alert" style="display: none;">
+            Invalid username or password. Please try again.
+        </div>
+
+
+        <form id="loginForm" onsubmit="handleLogin(event)">
+            <label for="userRole">Select Portal Role:</label>
+            <select id="userRole" class="form-input" required>
+                <option value="student">👨‍🎓 Student Portal</option>
+                <option value="admin">📊 System Administrator</option>
+            </select>
+
+            <label for="username">Username / ID Number:</label>
+            <input type="text" id="username" class="form-input" placeholder="Enter username or ID" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" class="form-input" placeholder="Enter password" required>
+
+            <button type="submit" class="login-btn">Sign In</button>
+        </form>
+    </div>
+
+    <script src="login.js"></script>
+
+    
+</body>
+</html>
