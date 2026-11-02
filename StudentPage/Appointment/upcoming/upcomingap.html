@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultation University - Student Portal</title>
+    <link rel="stylesheet" href="upcomingapp.css">
+</head>
+
+<body>
+
+    <!-- Dark Overlay for Mobile Slide-out Drawer -->
+    <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+    <!-- Sidebar Navigation -->
+    <div class="sidebar" id="sidebar">
+        <div class="brand">
+            <span>🎓 Consultation Univ.</span>
+            <!-- Close icon for mobile menu -->
+            <button class="close-sidebar-btn" onclick="toggleSidebar()">✕</button>
+        </div>
+        <ul class="nav-menu">
+            <li class="nav-item active"><a href="../Home/Home.html">🏠 Home</a></li>
+            <li class="nav-item"><a href="../Consultation/BookConsultation.html">📅 Book Consultation</a></li>
+            <li class="nav-item"><a href="../Appointment/Appointment.html">📋 My Appointments</a></li>
+            <li class="nav-item"><a href="../Queue/Queue.html">⏳ Consultation Queue</a></li>
+            <li class="nav-item"><a href="../Help/Help.html">❓ Help & Support</a></li>
+            <li class="nav-item" style="margin-top: auto;"><a href="../../login/login.html">🚪 Logout</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+        <!-- Topbar -->
+        <div class="topbar">
+            <div class="topbar-left">
+                <button class="hamburger-btn" onclick="toggleSidebar()">☰</button>
+                <strong>Student Portal</strong>
+            </div>
+            <div class="user-profile">
+                <span>John Carlo S. Cruz</span>
+                <div class="avatar">JC</div>
+            </div>
+        </div>
+
+        <div class="dashboard-container">
+            <div class="header-title">
+                <h1>Upcoming Appointments</h1>
+                <p>View your scheduled consultations, including professor details, appointment dates, and times.</p>
+            </div>
+
+            <div class="cards-grid">
+                <div class="card">
+                    <h3>Professor</h3>
+                </div>
+
+                <div class="card">
+                    <h3>Date</h3>
+                </div>
+
+                <div class="card">
+                    <h3>Time</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="upcomingapp.js"></script>
+</body>
