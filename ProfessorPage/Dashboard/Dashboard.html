@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consultation University - Faculty Portal</title>
-    <link rel="stylesheet" href="Dashboard.css">
+    <link rel="stylesheet" href="Professor.css">
 </head>
+
 <body>
     <!-- Dark Overlay for Mobile Slide-out Drawer -->
     <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
@@ -21,7 +23,6 @@
             <li class="nav-item"><a href="../Availability/MyAvailability.html">📅 Book Consultation</a></li>
             <li class="nav-item"><a href="../">📋 My Appointments</a></li>
             <li class="nav-item"><a href="../">⏳ Consultation Queue</a></li>
-            <li class="nav-item"><a href="../">❓ Help & Support</a></li>
             <li class="nav-item" style="margin-top: auto;"><a href="../../LOGIN/login.html">🚪 Logout</a></li>
         </ul>
     </div>
@@ -50,41 +51,77 @@
         <div class="cards-grid">
             <div class="card">
                 <div class="card-icon">📅</div>
-                <div class="card-title">Availability</div>
-                <div class="card-desc">Choose a professor/instructor and pick an available time slot that works for you.</div>
-                <button class="action-btn" data-action="Manage Availability">
-                    Manage
-                </button>
+                <h3 class="card-title">Today's Appointments</h3>
+                <h2 class="card-number">5</h2>
+                <p class="card-desc">Scheduled consultations today</p>
             </div>
 
             <div class="card">
-                <div class="card-icon">📩 </div>
-                <div class="card-title">Pending Requests</div>
-                <div class="card-desc">Review student consultation requests and approve or reject appointments.</div>
-                <button class="action-btn" data-action="Pending Requests">
-                    View Requests
-                </button>
+                <div class="card-icon">📩</div>
+                <h3 class="card-title">Pending Requests</h3>
+                <h2 class="card-number">3</h2>
+                <p class="card-desc">Requests waiting for approval</p>
             </div>
 
             <div class="card">
                 <div class="card-icon">👥</div>
-                <div class="card-title">Active Consultation Queue</div>
-                <div class="card-desc">Monitor students waiting for consultation and their current queue positions.</div>
-                <button class="action-btn" data-action="Consultation Queue">
-                    View Queue
-                </button>
+                <h3 class="card-title">Students in Queue</h3>
+                <h2 class="card-number">4</h2>
+                <p class="card-desc">Students currently waiting</p>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="section-heading">
+            <h2>Quick Actions</h2>
+        </div>
+
+        <div class="cards-grid">
+
+            <div class="card">
+                <div class="card-icon">🗓️</div>
+                <h3 class="card-title">My Availability</h3>
+                <p class="card-desc">
+                    Set your available consultation days and time slots.
+                </p>
+                <a href="../Availability/MyAvailability.html" class="action-btn" data-action="My Availability">
+                    Manage Availability
+                </a>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">📨</div>
+                <h3 class="card-title">Appointment Requests</h3>
+                <p class="card-desc">
+                    Review, approve, or decline student consultation requests.
+                </p>
+                <a href="../Appointments/Appointments.html" class="action-btn" data-action="Appointment Requests">
+                    View Requests
+                </a>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">👨‍🎓</div>
+                <h3 class="card-title">Queue Management</h3>
+                <p class="card-desc">
+                    Monitor the active queue and call the next student.
+                </p>
+                <a href="../Queue/Queue.html" class="action-btn" data-action="Queue Management">
+                    Manage Queue
+                </a>
             </div>
 
             <div class="card">
                 <div class="card-icon">📋</div>
-                <div class="card-title">Past Consultation Records</div>
-                <div class="card-desc">View completed consultations and review past student appointment records.</div>
-                <button class="action-btn" data-action="Consultation Records">
+                <h3 class="card-title">Consultation History</h3>
+                <p class="card-desc">
+                    View previous and completed student consultations.
+                </p>
+                <a href="../Records/Records.html" class="action-btn" data-action="Consultation History">
                     View Records
-                </button>
+                </a>
             </div>
         </div>
-    </div>
-    <script src="Dashboard.js"></script>
+        <script src="Professor.js"></script>
 
 </body>
