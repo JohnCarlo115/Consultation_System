@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help & Support - Consultation Univ.</title>
+    <link rel="stylesheet" href="../Home/Home.css">
+    <link rel="stylesheet" href="Help.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="brand">
+            <span>🎓 Consultation Univ.</span>
+        </div>
+        <ul class="nav-menu">
+            <li class="nav-item"><a href="../Home/Home.html">🏠 Home</a></li>
+            <li class="nav-item"><a href="../Consultation/BookConsultation.html">📅 Book Consultation</a></li>
+            <li class="nav-item"><a href="../Appointment/Appointment.html">📋 My Appointments</a></li>
+            <li class="nav-item"><a href="../Queue/Queue.html">⏳ Consultation Queue</a></li>
+            <li class="nav-item active"><a href="Help.html">❓ Help & Support</a></li>
+            <li class="nav-item" style="margin-top: auto;"><a href="../login/login.html">🚪 Logout</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="topbar">
+            <strong>Student Portal</strong>
+            <div class="user-profile">
+                <span>John Carlo S. Cruz</span>
+                <div class="avatar">JC</div>
+            </div>
+        </div>
+
+        <div class="content-body">
+            <h2>Help & Support Center</h2>
+            <p class="subtitle">Find answers to common questions regarding consultation bookings and live queue tracking.</p>
+
+            <!-- FAQ Accordion Container -->
+            <div class="faq-container">
+                <div class="faq-card" onclick="toggleFaq(this)">
+                    <div class="faq-header">
+                        <h3>How do I book a consultation with my professor?</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-body">
+                        <p>Navigate to <strong>Book Consultation</strong> from the sidebar. Choose your professor, pick an available date and time slot, type your consultation topic, and click <strong>Book Consultation</strong>.</p>
+                    </div>
+                </div>
+
+                <div class="faq-card" onclick="toggleFaq(this)">
+                    <div class="faq-header">
+                        <h3>How does the live consultation queue work?</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-body">
+                        <p>Once your appointment is confirmed for the current day, your turn will appear under <strong>Consultation Queue</strong>. You can view your real-time queue position and estimated waiting time.</p>
+                    </div>
+                </div>
+
+                <div class="faq-card" onclick="toggleFaq(this)">
+                    <div class="faq-header">
+                        <h3>Can I cancel or reschedule my appointment?</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-body">
+                        <p>Yes, go to <strong>My Appointments</strong> to view your active bookings and cancel or rebook if your selected schedule is no longer available.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Box -->
+            <div class="support-contact-box">
+                <h3>Still need assistance?</h3>
+                <p>Contact the College of Computer Studies Admin Office at <strong>ccs_support@tsu.edu.ph</strong> or visit San Isidro Campus, Building B, Room 204.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="Help.js"></script>
+</body>
+</html>
