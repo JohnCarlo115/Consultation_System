@@ -112,6 +112,42 @@
             font-size: 0.9rem;
         }
 
+        .prof-card {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 14px;
+            margin-top: 10px;
+            border: 1px solid #333;
+            border-radius: 8px;
+            background: #1a1a1a;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .prof-card:hover {
+            background: #262626;
+            border-color: #007bff;
+        }
+
+        .prof-avatar {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: #333;
+        }
+
+        .prof-info h4 {
+            margin: 0;
+            font-size: 0.95rem;
+            color: #fff;
+        }
+
+        .prof-info p {
+            margin: 2px 0 0 0;
+            font-size: 0.8rem;
+            color: #888;
+        }
 
         .cards-grid {
             display: grid;
