@@ -1,87 +1,287 @@
-.subtitle {
-    color: #aaa;
-    margin-bottom: 25px;
+/* ==========================================
+   1. GLOBAL & CORE RESET
+   ========================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.faq-container {
+body {
+    background-color: #121316;
+    color: #e2e8f0;
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* ==========================================
+   2. SIDEBAR LAYOUT
+   ========================================== */
+.sidebar {
+    width: 240px;
+    background-color: #18191c;
+    border-right: 1px solid #26282e;
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    max-width: 800px;
+    padding: 20px 15px;
+    flex-shrink: 0;
 }
 
-.faq-card {
-    background: #1e1e1e;
-    border: 1px solid #2e2e2e;
+.brand {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    height: 100%;
+}
+
+.nav-item a {
+    text-decoration: none;
+    color: #94a3b8;
+    padding: 10px 14px;
     border-radius: 8px;
-    padding: 16px 20px;
-    cursor: pointer;
-    transition: background 0.2s ease, border-color 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
 }
 
-.faq-card:hover {
-    background: #262626;
-    border-color: #007bff;
+.nav-item.active a, 
+.nav-item a:hover {
+    background-color: #212328;
+    color: #38bdf8;
 }
 
-.faq-header {
+/* ==========================================
+   3. MAIN CONTENT & TOPBAR
+   ========================================== */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.topbar {
+    background-color: #18191c;
+    padding: 15px 30px;
+    border-bottom: 1px solid #26282e;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.faq-header h3 {
-    margin: 0;
-    font-size: 1rem;
-    color: #fff;
-}
-
-.faq-icon {
-    font-size: 1.2rem;
-    color: #007bff;
-    font-weight: bold;
-    transition: transform 0.2s ease;
-}
-
-.faq-body {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease-out, margin-top 0.3s ease;
-}
-
-.faq-body p {
-    margin: 0;
-    color: #ccc;
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     font-size: 0.9rem;
-    line-height: 1.5;
+    color: #94a3b8;
 }
 
-/* Expanded FAQ state */
-.faq-card.open .faq-body {
-    max-height: 150px;
-    margin-top: 12px;
+.avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #334155;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
 }
 
-.faq-card.open .faq-icon {
-    transform: rotate(45deg);
+/* ==========================================
+   4. DASHBOARD CARDS & QUEUE BANNER
+   ========================================== */
+.dashboard-container {
+    padding: 30px;
 }
 
-.support-contact-box {
-    margin-top: 35px;
-    padding: 20px;
-    background: #101d2a;
-    border: 1px solid #007bff;
-    border-radius: 8px;
-    max-width: 800px;
+.header-title {
+    margin-bottom: 25px;
 }
 
-.support-contact-box h3 {
-    margin-top: 0;
+.header-title h1 {
+    font-size: 1.6rem;
+    color: #ffffff;
+}
+
+.header-title p {
+    color: #94a3b8;
+    font-size: 0.9rem;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background-color: #18191c;
+    border: 1px solid #26282e;
+    border-radius: 12px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    border-color: #38bdf8;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.card-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    background-color: #212328;
     color: #38bdf8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
 }
 
-.support-contact-box p {
-    margin-bottom: 0;
-    color: #d0e3f7;
-    font-size: 0.92rem;
+.card-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 6px;
+}
+
+.card-desc {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    line-height: 1.4;
+}
+
+.queue-banner {
+    margin-top: 30px;
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    color: white;
+    border-radius: 12px;
+    padding: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.queue-info h2 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.queue-info p {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.queue-badge {
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 10px 18px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.queue-badge span {
+    display: block;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.queue-badge label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ==========================================
+   5. MOBILE RESPONSIVE DRAWER
+   ========================================== */
+.hamburger-btn,
+.close-sidebar-btn,
+.sidebar-overlay {
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .hamburger-btn {
+        display: block !important;
+        background: none;
+        border: none;
+        font-size: 1.6rem;
+        cursor: pointer;
+        color: #38bdf8;
+        padding: 4px;
+        position: relative;
+        z-index: 10;
+    }
+
+    .close-sidebar-btn {
+        display: block !important;
+        background: none;
+        border: none;
+        font-size: 1.4rem;
+        color: #94a3b8;
+        cursor: pointer;
+        padding: 4px;
+    }
+
+    .sidebar {
+        position: fixed !important;
+        top: 0 !important;
+        left: -280px !important;
+        width: 260px !important;
+        height: 100vh !important;
+        background-color: #18191c !important;
+        z-index: 1001 !important;
+        box-shadow: 4px 0 16px rgba(0, 0, 0, 0.5);
+        transition: left 0.3s ease-in-out !important;
+    }
+
+    .sidebar.open {
+        left: 0 !important;
+    }
+
+    .sidebar-overlay {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.6);
+        z-index: 999;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .sidebar-overlay.active {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
 }
