@@ -1,111 +1,267 @@
-/* ==========================================
-   HELP & SUPPORT DARK THEME STYLES
+        /* ==========================================
+        HELP & SUPPORT DARK THEME STYLES
+        ========================================== */
+
+        /* Main Content Body Padding */
+        .content-body {
+            padding: 30px;
+            color: #e2e8f0;
+        }
+
+        .content-body h2 {
+            font-size: 1.6rem;
+            color: #ffffff;
+            margin-bottom: 6px;
+        }
+
+        .subtitle {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+        }
+
+        /* Accordion Container */
+        .faq-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            max-width: 850px;
+        }
+
+        /* Individual FAQ Cards */
+        .faq-card {
+            background-color: #18191c;
+            border: 1px solid #26282e;
+            border-radius: 10px;
+            padding: 16px 20px;
+            cursor: pointer;
+            transition: background 0.2s ease, border-color 0.2s ease;
+        }
+
+        .faq-card:hover {
+            background-color: #212328;
+            border-color: #38bdf8;
+        }
+
+        .faq-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-header h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin: 0;
+        }
+
+        .faq-icon {
+            font-size: 1.2rem;
+            color: #38bdf8;
+            font-weight: bold;
+            transition: transform 0.2s ease;
+        }
+
+        /* Hidden Content Body */
+        .faq-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, margin-top 0.3s ease;
+        }
+
+        .faq-body p {
+            font-size: 0.88rem;
+            color: #94a3b8;
+            line-height: 1.5;
+            margin-top: 10px;
+        }
+
+        /* Expanded Card State */
+        .faq-card.open .faq-body {
+            max-height: 150px;
+        }
+
+        .faq-card.open .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        /* Support Contact Box */
+        .support-contact-box {
+            margin-top: 30px;
+            max-width: 850px;
+            background-color: #18191c;
+            border: 1px solid #2563eb;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .support-contact-box h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #38bdf8;
+            margin-bottom: 8px;
+        }
+
+        .support-contact-box p {
+            font-size: 0.9rem;
+            color: #cbd5e1;
+            line-height: 1.4;
+            margin: 0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f6f9;
+            color: #333;
+            display: flex;
+            height: 100vh;
+        }
+
+        .sidebar {
+            width: 240px;
+            background-color: #ffffff;
+            border-right: 1px solid #e2e8f0;
+            display: flex;
+            flex-direction: column;
+            padding: 20px 15px;
+        }
+
+        .brand {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #2b6cb0;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            height: 100%;
+        }
+
+        .nav-item a {
+            text-decoration: none;
+            color: #4a5568;
+            padding: 10px 14px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .nav-item.active a, .nav-item a:hover {
+            background-color: #ebf8ff;
+            color: #2b6cb0;
+        }
+
+        /* ==========================================
+   MOBILE SLIDE-OUT DRAWER STYLES
    ========================================== */
+@media screen and (max-width: 768px) {
+    .hamburger-btn {
+        display: block !important;
+        background: none;
+        border: none;
+        font-size: 1.6rem;
+        cursor: pointer;
+        color: #3182ce;
+        padding: 4px;
+        position: relative;
+        z-index: 10;
+    }
 
-/* Main Content Body Padding */
-.content-body {
-    padding: 30px;
-    color: #e2e8f0;
-}
+    .close-sidebar-btn {
+        display: block !important;
+        background: none;
+        border: none;
+        font-size: 1.4rem;
+        color: #718096;
+        cursor: pointer;
+        padding: 4px;
+    }
 
-.content-body h2 {
-    font-size: 1.6rem;
-    color: #ffffff;
-    margin-bottom: 6px;
-}
+    .sidebar {
+        position: fixed !important;
+        top: 0 !important;
+        left: -280px !important; /* Positioned off-screen */
+        width: 260px !important;
+        height: 100vh !important;
+        background-color: #ffffff !important;
+        z-index: 1001 !important;
+        box-shadow: 4px 0 16px rgba(0, 0, 0, 0.15);
+        transition: left 0.3s ease-in-out !important;
+    }
 
-.subtitle {
-    color: #94a3b8;
-    font-size: 0.9rem;
-    margin-bottom: 25px;
-}
+    .sidebar.open {
+        left: 0 !important; /* Slide into screen view */
+    }
 
-/* Accordion Container */
-.faq-container {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    max-width: 850px;
-}
+    .sidebar-overlay {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.4);
+        z-index: 999;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
 
-/* Individual FAQ Cards */
-.faq-card {
-    background-color: #18191c;
-    border: 1px solid #26282e;
-    border-radius: 10px;
-    padding: 16px 20px;
-    cursor: pointer;
-    transition: background 0.2s ease, border-color 0.2s ease;
-}
+    .sidebar-overlay.active {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
 
-.faq-card:hover {
-    background-color: #212328;
-    border-color: #38bdf8;
-}
-
-.faq-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.faq-header h3 {
-    font-size: 1rem;
-    font-weight: 600;
-    color: #ffffff;
+    * {
     margin: 0;
-}
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-.faq-icon {
-    font-size: 1.2rem;
-    color: #38bdf8;
-    font-weight: bold;
-    transition: transform 0.2s ease;
-}
+    body {
+        display: flex;
+        min-height: 100vh;
+        background-color: #f4f6f9;
+        color: #2d3748;
+    }
 
-/* Hidden Content Body */
-.faq-body {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease-out, margin-top 0.3s ease;
-}
+    /* Sidebar Layout */
+    .sidebar {
+        width: 260px;
+        background-color: #ffffff;
+        border-right: 1px solid #e2e8f0;
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        flex-shrink: 0;
+    }
 
-.faq-body p {
-    font-size: 0.88rem;
-    color: #94a3b8;
-    line-height: 1.5;
-    margin-top: 10px;
-}
-
-/* Expanded Card State */
-.faq-card.open .faq-body {
-    max-height: 150px;
-}
-
-.faq-card.open .faq-icon {
-    transform: rotate(45deg);
-}
-
-/* Support Contact Box */
-.support-contact-box {
-    margin-top: 30px;
-    max-width: 850px;
-    background-color: #18191c;
-    border: 1px solid #2563eb;
-    border-radius: 10px;
-    padding: 20px;
-}
-
-.support-contact-box h3 {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: #38bdf8;
-    margin-bottom: 8px;
-}
-
-.support-contact-box p {
-    font-size: 0.9rem;
-    color: #cbd5e1;
-    line-height: 1.4;
-    margin: 0;
+    /* Main Content takes remaining width */
+    .main-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+    }
 }
