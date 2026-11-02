@@ -195,6 +195,12 @@
             font-size: 0.9rem;
             color: #4a5568;
         }
+        .prof-card.active {
+            border-color: #007bff !important;
+            background: #101d2a !important;
+            box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+        }
+
         .booking-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
