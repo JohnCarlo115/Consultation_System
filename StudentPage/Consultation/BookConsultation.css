@@ -203,12 +203,12 @@
             margin-bottom: 10px;
             border: 1px solid #2e2e2e;
             border-radius: 8px;
-            background: #1a1a1a;
+            background: #d6d7e0;
             cursor: pointer;
             transition: all 0.2s ease;
         }
         
-        .prof-card.active {
+        .prof-card:hover {
             border-color: #007bff !important;
             background: #101d2a !important;
             box-shadow: 0 0 8px rgba(0, 123, 255, 0.4) !important;
