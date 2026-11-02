@@ -37,8 +37,11 @@ function toggleSidebar() {
     }
 }
 function selectProf(element) {
-    // Remove active class from all professor cards
-    document.querySelectorAll('.prof-card').forEach(card => card.classList.remove('active'));
-    // Add active class to clicked card
+    // 1. Remove active class from all prof cards
+    const cards = document.querySelectorAll('.prof-card');
+    cards.forEach(card => {
+        card.classList.remove('active');
+    });
+    // 2. Add active class to the clicked card
     element.classList.add('active');
 }
