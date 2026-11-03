@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultation Schedule Management</title>
+    <link rel="stylesheet" href="Consult.css">
+</head>
+<body>
+
+    <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+    <div class="sidebar" id="sidebar">
+        <div class="brand">
+            <span>🎓 Consultation Univ.</span>
+            <button class="close-sidebar-btn" onclick="toggleSidebar()">✕</button>
+        </div>
+        <ul class="nav-menu">
+            <li class="nav-item"><a href="../Dashboard/Dashboard.html">📊 Dashboard</a></li>
+            <li class="nav-item"><a href="../SystemOverview/SO.html">🖥️ System Overview</a></li>
+            <li class="nav-item"><a href="../StudentManagement/Stud.html">👨‍🎓 Student Management</a></li>
+            <li class="nav-item"><a href="../ProfessorManagement/Prof.html">👨‍🏫 Professor Management</a></li>
+            <li class="nav-item active"><a href="Consult.html">📅 Schedule Management</a></li>
+            <li class="nav-item" style="margin-top: auto;"><a href="../../login/login.html">🚪 Logout</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <div class="topbar">
+            <div class="topbar-left">
+                <button class="hamburger-btn" onclick="toggleSidebar()">☰</button>
+                <strong>Admin Portal</strong>
+            </div>
+            <div class="user-profile">
+                <span>System Administrator</span>
+                <div class="avatar">SA</div>
+            </div>
+        </div>
+
+        <div class="dashboard-container">
+            <div class="header-title">
+                <h1>Consultation Schedule Management</h1>
+                <p>Configure recurring office hours, room assignments, and consultation slots for faculty members.</p>
+            </div>
+
+            <div class="card action-card">
+                <div class="search-box">
+                    <input type="text" id="schedSearch" placeholder="Search by professor, day, or room..." onkeyup="filterSchedules()">
+                </div>
+                <button class="btn-primary" onclick="openAddSchedModal()">+ Create Schedule</button>
+            </div>
+
+            <div class="card">
+                <div class="card-title">Active Consultation Schedules</div>
+                <div class="table-wrapper">
+                    <table class="admin-table" id="schedTable">
+                        <thead>
+                            <tr>
+                                <th>Instructor</th>
+                                <th>Day & Time Slot</th>
+                                <th>Room / Venue</th>
+                                <th>Max Capacity</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Prof. Santos</strong></td>
+                                <td>Monday (10:00 AM - 12:00 PM)</td>
+                                <td>IT Consultation Room 1</td>
+                                <td>10 Students</td>
+                                <td><span class="status-badge active">Active</span></td>
+                                <td><button class="btn-action edit" onclick="editSched(this)">✏️ Edit</button></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Prof. Reyes</strong></td>
+                                <td>Wednesday (02:00 PM - 04:00 PM)</td>
+                                <td>Faculty Office 204</td>
+                                <td>8 Students</td>
+                                <td><span class="status-badge active">Active</span></td>
+                                <td><button class="btn-action edit" onclick="editSched(this)">✏️ Edit</button></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Prof. Mendoza</strong></td>
+                                <td>Friday (09:00 AM - 11:00 AM)</td>
+                                <td>Engineering Hall B</td>
+                                <td>12 Students</td>
+                                <td><span class="status-badge active">Active</span></td>
+                                <td><button class="btn-action edit" onclick="editSched(this)">✏️ Edit</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="schedModal">
+        <div class="modal-card">
+            <h2 id="schedModalTitle">Create Schedule</h2>
+            <form id="schedForm" onsubmit="saveSched(event)">
+                <input type="hidden" id="editRowIndexSched" value="">
+                <div class="form-group">
+                    <label>Instructor Name</label>
+                    <input type="text" id="schedProf" required placeholder="e.g. Prof. Santos">
+                </div>
+                <div class="form-group">
+                    <label>Day & Time Slot</label>
+                    <input type="text" id="schedTime" required placeholder="e.g. Monday (10:00 AM - 12:00 PM)">
+                </div>
+                <div class="form-group">
+                    <label>Room / Venue</label>
+                    <input type="text" id="schedRoom" required placeholder="e.g. IT Consultation Room 1">
+                </div>
+                <div class="form-group">
+                    <label>Max Queue Capacity</label>
+                    <input type="text" id="schedCap" required placeholder="e.g. 10 Students">
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn-secondary" onclick="closeSchedModal()">Cancel</button>
+                    <button type="submit" class="btn-primary">Save Schedule</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="Consult.js"></script>
+</body>
+</html>

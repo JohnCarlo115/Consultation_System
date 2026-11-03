@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultation University - Professor Management</title>
+    <link rel="stylesheet" href="Prof.css">
+</head>
+<body>
+
+    <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+    <div class="sidebar" id="sidebar">
+        <div class="brand">
+            <span>🎓 Consultation Univ.</span>
+            <button class="close-sidebar-btn" onclick="toggleSidebar()">✕</button>
+        </div>
+        <ul class="nav-menu">
+            <li class="nav-item"><a href="../Dashboard/Dashboard.html">📊 Dashboard</a></li>
+            <li class="nav-item"><a href="../SystemOverview/SO.html">🖥️ System Overview</a></li>
+            <li class="nav-item"><a href="../StudentManagement/Stud.html">👨‍🎓 Student Management</a></li>
+            <li class="nav-item active"><a href="Prof.html">👨‍🏫 Professor Management</a></li>
+            <li class="nav-item"><a href="../ConsultSchedManagement/Consult.html">📅 Schedule Management</a></li>
+            <li class="nav-item" style="margin-top: auto;"><a href="../../login/login.html">🚪 Logout</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <div class="topbar">
+            <div class="topbar-left">
+                <button class="hamburger-btn" onclick="toggleSidebar()">☰</button>
+                <strong>Admin Portal</strong>
+            </div>
+            <div class="user-profile">
+                <span>System Administrator</span>
+                <div class="avatar">SA</div>
+            </div>
+        </div>
+
+        <div class="dashboard-container">
+            <div class="header-title">
+                <h1>Professor Management</h1>
+                <p>Manage faculty members, departmental assignments, and consultation availability status.</p>
+            </div>
+
+            <div class="card action-card">
+                <div class="search-box">
+                    <input type="text" id="profSearch" placeholder="Search by professor name, department..." onkeyup="filterProfessors()">
+                </div>
+                <button class="btn-primary" onclick="openAddProfModal()">+ Add New Professor</button>
+            </div>
+
+            <div class="card">
+                <div class="card-title">Faculty Directory</div>
+                <div class="table-wrapper">
+                    <table class="admin-table" id="profTable">
+                        <thead>
+                            <tr>
+                                <th>Faculty Name</th>
+                                <th>Department</th>
+                                <th>Email</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Prof. Santos</strong></td>
+                                <td>College of Computer Studies</td>
+                                <td>santos@consultation.univ.edu</td>
+                                <td><span class="status-badge active">Available</span></td>
+                                <td><button class="btn-action edit" onclick="editProf(this)">✏️ Edit</button></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Prof. Reyes</strong></td>
+                                <td>College of Computer Studies</td>
+                                <td>reyes@consultation.univ.edu</td>
+                                <td><span class="status-badge active">Available</span></td>
+                                <td><button class="btn-action edit" onclick="editProf(this)">✏️ Edit</button></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Prof. Mendoza</strong></td>
+                                <td>College of Engineering</td>
+                                <td>mendoza@consultation.univ.edu</td>
+                                <td><span class="status-badge active">Available</span></td>
+                                <td><button class="btn-action edit" onclick="editProf(this)">✏️ Edit</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="profModal">
+        <div class="modal-card">
+            <h2 id="profModalTitle">Add New Professor</h2>
+            <form id="profForm" onsubmit="saveProf(event)">
+                <input type="hidden" id="editRowIndexProf" value="">
+                <div class="form-group">
+                    <label>Faculty Name</label>
+                    <input type="text" id="profName" required placeholder="e.g. Prof. Santos">
+                </div>
+                <div class="form-group">
+                    <label>Department</label>
+                    <input type="text" id="profDept" required placeholder="e.g. College of Computer Studies">
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" id="profEmail" required placeholder="e.g. santos@consultation.univ.edu">
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn-secondary" onclick="closeProfModal()">Cancel</button>
+                    <button type="submit" class="btn-primary">Save Faculty</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="Prof.js"></script>
+</body>
+</html>

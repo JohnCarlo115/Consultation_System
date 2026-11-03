@@ -1,111 +1,76 @@
-const PAGE_SIZE = 5;
-const KEY = "students";
- 
-const seed = [
-  { id: "2021-0145", name: "Maria Cruz",     course: "Computer Science",   year: "3rd Year", status: "Active" },
-  { id: "2022-0388", name: "John Reyes",     course: "Information Technology", year: "2nd Year", status: "Active" },
-  { id: "2023-0021", name: "Ana Santos",     course: "Psychology",         year: "1st Year", status: "Pending" },
-  { id: "2020-0976", name: "Miguel Torres",  course: "Nursing",            year: "4th Year", status: "Inactive" },
-  { id: "2022-0554", name: "Sofia Garcia",   course: "Business Administration", year: "2nd Year", status: "Active" },
-  { id: "2021-0731", name: "Paolo Mendoza",  course: "Education",          year: "3rd Year", status: "Active" }
-];
- 
-let students = load();
-let page = 1;
-let editingId = null;
- 
-const $ = (s) => document.querySelector(s);
-const body = $("#tableBody"), modal = $("#modal"), form = $("#form");
- 
-function load() {
-  try { return JSON.parse(localStorage.getItem(KEY)) || seed; } catch { return seed; }
+function toggleSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.querySelector('.sidebar-overlay');
+
+    if (sidebar) sidebar.classList.toggle('open');
+    if (overlay) overlay.classList.toggle('active');
 }
-function save() {
-  try { localStorage.setItem(KEY, JSON.stringify(students)); } catch {}
+
+function filterStudents() {
+    const input = document.getElementById('studSearch').value.toLowerCase();
+    const rows = document.querySelectorAll('#studentTable tbody tr');
+
+    rows.forEach(row => {
+        const text = row.textContent.toLowerCase();
+        row.style.display = text.includes(input) ? '' : 'none';
+    });
 }
-const esc = (t) => String(t).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
- 
-function filtered() {
-  const q = $("#search").value.trim().toLowerCase();
-  const st = $("#statusFilter").value;
-  return students.filter((s) =>
-    (!st || s.status === st) &&
-    (!q || [s.id, s.name, s.course].some((v) => v.toLowerCase().includes(q))));
+
+function openAddModal() {
+    document.getElementById('modalTitle').innerText = 'Add New Student';
+    document.getElementById('studentForm').reset();
+    document.getElementById('editRowIndex').value = '';
+    document.getElementById('studentModal').classList.add('active');
 }
- 
-function render() {
-  const list = filtered();
-  const pages = Math.max(1, Math.ceil(list.length / PAGE_SIZE));
-  page = Math.min(page, pages);
-  const start = (page - 1) * PAGE_SIZE;
-  const rows = list.slice(start, start + PAGE_SIZE);
- 
-  body.innerHTML = rows.length ? rows.map((s) => `
-    <tr>
-      <td>${esc(s.id)}</td>
-      <td>${esc(s.name)}</td>
-      <td>${esc(s.course)}</td>
-      <td>${esc(s.year)}</td>
-      <td><span class="badge ${esc(s.status)}">${esc(s.status)}</span></td>
-      <td>
-        <button class="link" data-edit="${esc(s.id)}">Edit</button>
-        <button class="link danger" data-del="${esc(s.id)}">Delete</button>
-      </td>
-    </tr>`).join("") : `<tr><td colspan="6" class="empty">No students found. Try a different search or add a student.</td></tr>`;
- 
-  $("#count").textContent = list.length
-    ? `Showing ${start + 1}–${start + rows.length} of ${list.length} students`
-    : "Showing 0 students";
- 
-  let html = `<button data-p="${page - 1}" ${page === 1 ? "disabled" : ""} aria-label="Previous page">‹</button>`;
-  for (let i = 1; i <= pages; i++) html += `<button data-p="${i}" class="${i === page ? "current" : ""}">${i}</button>`;
-  html += `<button data-p="${page + 1}" ${page === pages ? "disabled" : ""} aria-label="Next page">›</button>`;
-  $("#pager").innerHTML = html;
+
+function closeModal() {
+    document.getElementById('studentModal').classList.remove('active');
 }
- 
-function openModal(student) {
-  editingId = student ? student.id : null;
-  form.reset();
-  $("#formError").hidden = true;
-  $("#modalTitle").textContent = student ? "Edit Student" : "Add Student";
-  if (student) Object.entries(student).forEach(([k, v]) => (form.elements[k].value = v));
-  modal.showModal();
+
+function editStudent(button) {
+    const row = button.closest('tr');
+    const cells = row.querySelectorAll('td');
+
+    document.getElementById('modalTitle').innerText = 'Edit Student Details';
+    document.getElementById('studId').value = cells[0].textContent.trim();
+    document.getElementById('studName').value = cells[1].textContent.trim();
+    document.getElementById('studSection').value = cells[2].textContent.trim();
+    document.getElementById('studCourse').value = cells[3].textContent.trim();
+
+    document.getElementById('editRowIndex').value = row.rowIndex;
+    document.getElementById('studentModal').classList.add('active');
 }
- 
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-  const data = Object.fromEntries(new FormData(form));
-  Object.keys(data).forEach((k) => (data[k] = data[k].trim()));
-  const duplicate = students.some((s) => s.id === data.id && s.id !== editingId);
-  if (duplicate) {
-    $("#formError").textContent = "That Student ID already exists. Use a different ID.";
-    $("#formError").hidden = false;
-    return;
-  }
-  if (editingId) students = students.map((s) => (s.id === editingId ? data : s));
-  else students.unshift(data);
-  save();
-  modal.close();
-  render();
-});
- 
-$("#addBtn").addEventListener("click", () => openModal());
-$("#cancelBtn").addEventListener("click", () => modal.close());
-$("#search").addEventListener("input", () => { page = 1; render(); });
-$("#statusFilter").addEventListener("change", () => { page = 1; render(); });
- 
-body.addEventListener("click", (e) => {
-  const edit = e.target.dataset.edit, del = e.target.dataset.del;
-  if (edit) openModal(students.find((s) => s.id === edit));
-  if (del && confirm("Delete this student? This can't be undone.")) {
-    students = students.filter((s) => s.id !== del);
-    save();
-    render();
-  }
-});
-$("#pager").addEventListener("click", (e) => {
-  const p = Number(e.target.dataset.p);
-  if (p) { page = p; render(); }
-});
- 
-render();
+
+function saveStudent(event) {
+    event.preventDefault();
+
+    const id = document.getElementById('studId').value;
+    const name = document.getElementById('studName').value;
+    const section = document.getElementById('studSection').value;
+    const course = document.getElementById('studCourse').value;
+    const rowIndex = document.getElementById('editRowIndex').value;
+
+    const table = document.getElementById('studentTable');
+
+    if (rowIndex !== '') {
+        const row = table.rows[rowIndex];
+        row.cells[0].innerHTML = `<strong>${id}</strong>`;
+        row.cells[1].textContent = name;
+        row.cells[2].textContent = section;
+        row.cells[3].textContent = course;
+    } else {
+        const tbody = table.querySelector('tbody');
+        const newRow = document.createElement('tr');
+        newRow.innerHTML = `
+            <td><strong>${id}</strong></td>
+            <td>${name}</td>
+            <td>${section}</td>
+            <td>${course}</td>
+            <td><span class="status-badge active">Active</span></td>
+            <td><button class="btn-action edit" onclick="editStudent(this)">✏️ Edit</button></td>
+        `;
+        tbody.appendChild(newRow);
+    }
+
+    closeModal();
+}

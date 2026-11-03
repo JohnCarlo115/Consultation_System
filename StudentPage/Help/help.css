@@ -1,6 +1,3 @@
-/* ==========================================
-   1. GLOBAL & CORE RESET
-   ========================================== */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -9,30 +6,25 @@
 }
 
 body {
-    background-color: #121316;
-    color: #e2e8f0;
+    background-color: #f4f6f9;
+    color: #333;
     display: flex;
     height: 100vh;
-    overflow: hidden;
 }
 
-/* ==========================================
-   2. SIDEBAR LAYOUT
-   ========================================== */
 .sidebar {
     width: 240px;
-    background-color: #18191c;
-    border-right: 1px solid #26282e;
+    background-color: #ffffff;
+    border-right: 1px solid #e2e8f0;
     display: flex;
     flex-direction: column;
     padding: 20px 15px;
-    flex-shrink: 0;
 }
 
 .brand {
     font-size: 1.1rem;
     font-weight: bold;
-    color: #ffffff;
+    color: #2b6cb0;
     margin-bottom: 30px;
     display: flex;
     align-items: center;
@@ -49,7 +41,7 @@ body {
 
 .nav-item a {
     text-decoration: none;
-    color: #94a3b8;
+    color: #4a5568;
     padding: 10px 14px;
     border-radius: 8px;
     display: flex;
@@ -60,15 +52,11 @@ body {
     transition: all 0.2s ease;
 }
 
-.nav-item.active a, 
-.nav-item a:hover {
-    background-color: #212328;
-    color: #38bdf8;
+.nav-item.active a, .nav-item a:hover {
+    background-color: #ebf8ff;
+    color: #2b6cb0;
 }
 
-/* ==========================================
-   3. MAIN CONTENT & TOPBAR
-   ========================================== */
 .main-content {
     flex: 1;
     display: flex;
@@ -77,12 +65,18 @@ body {
 }
 
 .topbar {
-    background-color: #18191c;
+    background-color: #ffffff;
     padding: 15px 30px;
-    border-bottom: 1px solid #26282e;
+    border-bottom: 1px solid #e2e8f0;
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.topbar-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
 .user-profile {
@@ -90,135 +84,115 @@ body {
     align-items: center;
     gap: 10px;
     font-size: 0.9rem;
-    color: #94a3b8;
+    color: #4a5568;
 }
 
 .avatar {
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    background-color: #334155;
-    color: #ffffff;
+    background-color: #cbd5e0;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
 }
 
-/* ==========================================
-   4. HELP & SUPPORT CONTENT & ACCORDION
-   ========================================== */
-.content-body {
+.dashboard-container {
     padding: 30px;
 }
 
-.content-body h2 {
-    font-size: 1.6rem;
-    color: #ffffff;
-    margin-bottom: 6px;
-}
-
-.subtitle {
-    color: #94a3b8;
-    font-size: 0.9rem;
+.header-title {
     margin-bottom: 25px;
 }
 
+.header-title h1 {
+    font-size: 1.6rem;
+    color: #1a202c;
+}
+
+.header-title p {
+    color: #718096;
+    font-size: 0.9rem;
+}
+
+/* FAQ Accordion Component */
 .faq-container {
     display: flex;
     flex-direction: column;
     gap: 12px;
-    max-width: 850px;
+    max-width: 800px;
 }
 
-.faq-card {
-    background-color: #18191c;
-    border: 1px solid #26282e;
-    border-radius: 10px;
+.faq-item {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    transition: border-color 0.2s ease;
+}
+
+.faq-item.active {
+    border-color: #3182ce;
+}
+
+.faq-question {
+    width: 100%;
     padding: 18px 22px;
-    cursor: pointer;
-    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
-}
-
-.faq-card:hover {
-    background-color: #212328;
-    border-color: #38bdf8;
-    transform: translateY(-2px);
-}
-
-.faq-header {
+    background-color: #ffffff;
+    border: none;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #2d3748;
+    cursor: pointer;
+    text-align: left;
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.faq-header h3 {
-    font-size: 1.05rem;
-    font-weight: 600;
-    color: #ffffff;
-    margin: 0;
+.faq-question:hover {
+    background-color: #ebf8ff;
+    color: #2b6cb0;
 }
 
 .faq-icon {
-    font-size: 1.2rem;
-    color: #38bdf8;
+    font-size: 1.3rem;
+    color: #3182ce;
     font-weight: bold;
-    transition: transform 0.2s ease;
 }
 
-.faq-body {
+.faq-answer {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease-out, margin-top 0.3s ease;
+    transition: max-height 0.25s ease-out, padding 0.25s ease-out;
+    background-color: #ffffff;
+    padding: 0 22px;
 }
 
-.faq-body p {
+.faq-item.active .faq-answer {
+    max-height: 200px;
+    padding: 0 22px 18px 22px;
+    border-top: 1px solid #edf2f7;
+}
+
+.faq-answer p {
     font-size: 0.9rem;
-    color: #94a3b8;
+    color: #4a5568;
     line-height: 1.5;
-    margin-top: 10px;
+    margin-top: 12px;
 }
 
-.faq-card.open .faq-body {
-    max-height: 150px;
-}
-
-.faq-card.open .faq-icon {
-    transform: rotate(45deg);
-}
-
-.support-contact-box {
-    margin-top: 30px;
-    max-width: 850px;
-    background-color: #18191c;
-    border: 1px solid #2563eb;
-    border-radius: 10px;
-    padding: 20px 24px;
-}
-
-.support-contact-box h3 {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: #38bdf8;
-    margin-bottom: 8px;
-}
-
-.support-contact-box p {
-    font-size: 0.9rem;
-    color: #cbd5e1;
-    line-height: 1.4;
-    margin: 0;
-}
-
-/* ==========================================
-   5. MOBILE RESPONSIVE DRAWER STYLES
-   ========================================== */
+/* Desktop Defaults for Mobile Elements */
 .hamburger-btn,
 .close-sidebar-btn,
 .sidebar-overlay {
     display: none;
 }
 
+/* Mobile Slide-out Drawer Styles */
 @media screen and (max-width: 768px) {
     .hamburger-btn {
         display: block !important;
@@ -226,7 +200,7 @@ body {
         border: none;
         font-size: 1.6rem;
         cursor: pointer;
-        color: #38bdf8;
+        color: #3182ce;
         padding: 4px;
         position: relative;
         z-index: 10;
@@ -237,7 +211,7 @@ body {
         background: none;
         border: none;
         font-size: 1.4rem;
-        color: #94a3b8;
+        color: #718096;
         cursor: pointer;
         padding: 4px;
     }
@@ -248,9 +222,9 @@ body {
         left: -280px !important;
         width: 260px !important;
         height: 100vh !important;
-        background-color: #18191c !important;
+        background-color: #ffffff !important;
         z-index: 1001 !important;
-        box-shadow: 4px 0 16px rgba(0, 0, 0, 0.5);
+        box-shadow: 4px 0 16px rgba(0, 0, 0, 0.15);
         transition: left 0.3s ease-in-out !important;
     }
 
@@ -265,7 +239,7 @@ body {
         left: 0;
         width: 100vw;
         height: 100vh;
-        background-color: rgba(0, 0, 0, 0.6);
+        background-color: rgba(0, 0, 0, 0.4);
         z-index: 999;
         opacity: 0;
         visibility: hidden;
@@ -277,5 +251,21 @@ body {
         opacity: 1;
         visibility: visible;
         pointer-events: auto;
+    }
+
+    body {
+        flex-direction: column;
+    }
+
+    .main-content {
+        width: 100%;
+    }
+
+    .topbar {
+        padding: 12px 16px;
+    }
+
+    .dashboard-container {
+        padding: 16px;
     }
 }

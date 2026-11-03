@@ -1,84 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Student Management | Consultation</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultation University - Student Management</title>
+    <link rel="stylesheet" href="Stud.css">
 </head>
 <body>
-  <aside class="sidebar">
-    <div class="brand"><span class="logo">C</span><div><strong>Consultation</strong><small>Admin</small></div></div>
-    <nav>
-      <a href="#">Dashboard</a>
-      <a href="#" class="active">Student Management</a>
-      <a href="#">Consultations</a>
-      <a href="#">Schedule</a>
-      <a href="#">Counselors</a>
-      <a href="#">Reports</a>
-      <a href="#">Settings</a>
-    </nav>
-    <a href="#" class="logout">Logout</a>
-  </aside>
- 
-  <main class="content">
-    <header class="page-head">
-      <div>
-        <h1>Student Management</h1>
-        <p>View, add, edit, and delete your student records.</p>
-      </div>
-      <button class="btn primary" id="addBtn">+ Add Student</button>
-    </header>
- 
-    <section class="card">
-      <div class="toolbar">
-        <input type="search" id="search" placeholder="Search by name, ID, or course" aria-label="Search students">
-        <select id="statusFilter" aria-label="Filter by status">
-          <option value="">All statuses</option>
-          <option>Active</option>
-          <option>Inactive</option>
-          <option>Pending</option>
-        </select>
-      </div>
- 
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr><th>Student ID</th><th>Name</th><th>Course</th><th>Year Level</th><th>Status</th><th>Actions</th></tr>
-          </thead>
-          <tbody id="tableBody"></tbody>
-        </table>
-      </div>
- 
-      <footer class="table-foot">
-        <span id="count"></span>
-        <div class="pager" id="pager"></div>
-      </footer>
-    </section>
-  </main>
- 
-  <dialog id="modal">
-    <form id="form" method="dialog">
-      <h2 id="modalTitle">Add Student</h2>
-      <label>Student ID<input name="id" required placeholder="2024-0001"></label>
-      <label>Full name<input name="name" required></label>
-      <label>Course<input name="course" required placeholder="Computer Science"></label>
-      <div class="row">
-        <label>Year level
-          <select name="year"><option>1st Year</option><option>2nd Year</option><option>3rd Year</option><option>4th Year</option></select>
-        </label>
-        <label>Status
-          <select name="status"><option>Active</option><option>Inactive</option><option>Pending</option></select>
-        </label>
-      </div>
-      <p class="error" id="formError" hidden></p>
-      <div class="actions">
-        <button type="button" class="btn ghost" id="cancelBtn">Cancel</button>
-        <button type="submit" class="btn primary">Save student</button>
-      </div>
-    </form>
-  </dialog>
- 
-  <script src="script.js"></script>
+
+    <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+    <div class="sidebar" id="sidebar">
+        <div class="brand">
+            <span>🎓 Consultation Univ.</span>
+            <button class="close-sidebar-btn" onclick="toggleSidebar()">✕</button>
+        </div>
+        <ul class="nav-menu">
+            <li class="nav-item"><a href="../Dashboard/Dashboard.html">📊 Dashboard</a></li>
+            <li class="nav-item"><a href="../SystemOverview/SO.html">🖥️ System Overview</a></li>
+            <li class="nav-item active"><a href="Stud.html">👨‍🎓 Student Management</a></li>
+            <li class="nav-item"><a href="../ProfessorManagement/Prof.html">👨‍🏫 Professor Management</a></li>
+            <li class="nav-item"><a href="../ConsultSchedManagement/Consult.html">📅 Schedule Management</a></li>
+            <li class="nav-item" style="margin-top: auto;"><a href="../../login/login.html">🚪 Logout</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <div class="topbar">
+            <div class="topbar-left">
+                <button class="hamburger-btn" onclick="toggleSidebar()">☰</button>
+                <strong>Admin Portal</strong>
+            </div>
+            <div class="user-profile">
+                <span>System Administrator</span>
+                <div class="avatar">SA</div>
+            </div>
+        </div>
+
+        <div class="dashboard-container">
+            <div class="header-title">
+                <h1>Student Management</h1>
+                <p>Add, search, filter, and edit registered student profiles and academic records.</p>
+            </div>
+
+            <div class="card action-card">
+                <div class="search-box">
+                    <input type="text" id="studSearch" placeholder="Search by name, ID number..." onkeyup="filterStudents()">
+                </div>
+                <button class="btn-primary" onclick="openAddModal()">+ Add New Student</button>
+            </div>
+
+            <div class="card">
+                <div class="card-title">Registered Students List</div>
+                <div class="table-wrapper">
+                    <table class="admin-table" id="studentTable">
+                        <thead>
+                            <tr>
+                                <th>Student ID</th>
+                                <th>Full Name</th>
+                                <th>Year & Section</th>
+                                <th>Course</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>2024-00101</strong></td>
+                                <td>Juan Dela Cruz</td>
+                                <td>BSIT 3-B</td>
+                                <td>Information Technology</td>
+                                <td><span class="status-badge active">Active</span></td>
+                                <td><button class="btn-action edit" onclick="editStudent(this)">✏️ Edit</button></td>
+                            </tr>
+                            <tr>
+                                <td><strong>2024-00102</strong></td>
+                                <td>Ana Reyes</td>
+                                <td>BSIT 3-A</td>
+                                <td>Information Technology</td>
+                                <td><span class="status-badge active">Active</span></td>
+                                <td><button class="btn-action edit" onclick="editStudent(this)">✏️ Edit</button></td>
+                            </tr>
+                            <tr>
+                                <td><strong>2024-00103</strong></td>
+                                <td>Mark Banalan</td>
+                                <td>BSCS 2-A</td>
+                                <td>Computer Science</td>
+                                <td><span class="status-badge active">Active</span></td>
+                                <td><button class="btn-action edit" onclick="editStudent(this)">✏️ Edit</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="studentModal">
+        <div class="modal-card">
+            <h2 id="modalTitle">Edit Student Details</h2>
+            <form id="studentForm" onsubmit="saveStudent(event)">
+                <input type="hidden" id="editRowIndex" value="">
+                <div class="form-group">
+                    <label>Student ID Number</label>
+                    <input type="text" id="studId" required placeholder="e.g. 2024-00101">
+                </div>
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="studName" required placeholder="e.g. Juan Dela Cruz">
+                </div>
+                <div class="form-group">
+                    <label>Year & Section</label>
+                    <input type="text" id="studSection" required placeholder="e.g. BSIT 3-B">
+                </div>
+                <div class="form-group">
+                    <label>Course</label>
+                    <input type="text" id="studCourse" required placeholder="e.g. Information Technology">
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn-secondary" onclick="closeModal()">Cancel</button>
+                    <button type="submit" class="btn-primary">Save Student</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="Stud.js"></script>
 </body>
 </html>
