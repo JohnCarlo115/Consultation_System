@@ -8,13 +8,11 @@
 </head>
 <body>
     
-    <!-- Dark Overlay for Mobile Slide-out Drawer -->
     <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
-    <!-- Sidebar Navigation -->
+
     <div class="sidebar" id="sidebar">
         <div class="brand">
             <span>🎓 Consultation Univ.</span>
-            <!-- Close icon for mobile menu -->
             <button class="close-sidebar-btn" onclick="toggleSidebar()">✕</button>
         </div>
         <ul class="nav-menu">
@@ -28,7 +26,6 @@
     </div>
 
     <div class="main-content">
-        <!-- Topbar -->
         <div class="topbar">
             <div class="topbar-left">
                 <button class="hamburger-btn" onclick="toggleSidebar()">☰</button>
@@ -43,7 +40,7 @@
         <div class="dashboard-container">
             <div class="header-title">
                 <h1>My Appointments</h1>
-                <p>Here are your upcoming consultations:</p>
+                <p>Select a view to check upcoming consultations, past logs, or detailed records:</p>
             </div>
 
             <div class="booking-grid">
@@ -51,11 +48,11 @@
                     <div class="card-icon">📅</div>
                     <div class="card-title">View Upcoming Appointments</div>
                 </div>
-                <div class="card">
+                <div class="card" onclick="window.location.href='PastApp/PastApp.html'">
                     <div class="card-icon">📚</div>
                     <div class="card-title">View Past Appointments</div>
                 </div>
-                <div class="card">
+                <div class="card" onclick="window.location.href='AppDetails/AppDetails.html'">
                     <div class="card-icon">📋</div>
                     <div class="card-title">View Appointment Details</div>
                 </div>
