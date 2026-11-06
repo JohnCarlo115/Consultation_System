@@ -21,4 +21,12 @@ function handleLogin(event) {
             alert("Invalid Student credentials!\nDemo Login: student / student123");
         }
     }
+    // Validation for Professor
+    else if (role === 'professor') {
+        if (userVal === 'professor' && passVal === 'professor123') {
+            window.location.href = "../ProfessorPage/Dashboard/Dashboard.html";
+        } else {
+            alert("Invalid Professor credentials!\nDemo Login: professor / professor123");
+        }
+    }
 }
