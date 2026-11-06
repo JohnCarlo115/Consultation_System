@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultation University - Appointment Details</title>
+    <link rel="stylesheet" href="AppDetails.css">
+</head>
+<body>
+
+    <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+    <div class="sidebar" id="sidebar">
+        <div class="brand">
+            <span>🎓 Consultation Univ.</span>
+            <button class="close-sidebar-btn" onclick="toggleSidebar()">✕</button>
+        </div>
+        <ul class="nav-menu">
+            <li class="nav-item"><a href="../../Home/Home.html">🏠 Home</a></li>
+            <li class="nav-item"><a href="../../Consultation/BookConsultation.html">📅 Book Consultation</a></li>
+            <li class="nav-item active"><a href="../Appointment.html">📋 My Appointments</a></li>
+            <li class="nav-item"><a href="../../Queue/Queue.html">⏳ Consultation Queue</a></li>
+            <li class="nav-item"><a href="../../Help/help.html">❓ Help & Support</a></li>
+            <li class="nav-item" style="margin-top: auto;"><a href="../../login/login.html">🚪 Logout</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <div class="topbar">
+            <div class="topbar-left">
+                <button class="hamburger-btn" onclick="toggleSidebar()">☰</button>
+                <strong>Student Portal</strong>
+            </div>
+            <div class="user-profile">
+                <span>John Carlo S. Cruz</span>
+                <div class="avatar">JC</div>
+            </div>
+        </div>
+
+        <div class="dashboard-container">
+            <div class="header-title">
+                <h1>Appointment Details</h1>
+                <p>Complete record summary for your selected consultation session.</p>
+            </div>
+
+            <!-- Details Card -->
+            <div class="card details-card">
+                <div class="details-header">
+                    <span class="status-badge active">Confirmed</span>
+                    <span class="queue-number">Queue Position: #2</span>
+                </div>
+
+                <div class="details-grid">
+                    <div class="detail-item">
+                        <label>Faculty Instructor</label>
+                        <p>Prof. Santos</p>
+                    </div>
+
+                    <div class="detail-item">
+                        <label>Department / Subject</label>
+                        <p>College of Computer Studies • Web Development</p>
+                    </div>
+
+                    <div class="detail-item">
+                        <label>Scheduled Date</label>
+                        <p>November 20, 2026</p>
+                    </div>
+
+                    <div class="detail-item">
+                        <label>Time Slot</label>
+                        <p>10:30 AM - 11:30 AM</p>
+                    </div>
+
+                    <div class="detail-item">
+                        <label>Consultation Venue</label>
+                        <p>IT Consultation Room 1</p>
+                    </div>
+
+                    <div class="detail-item full-width">
+                        <label>Consultation Topic / Purpose</label>
+                        <p>Web Development Final Term Project Architecture & Front-end UI Review</p>
+                    </div>
+                </div>
+
+                <div class="actions-row">
+                    <button class="btn-secondary" onclick="window.location.href='../Appointment.html'">← Back to Appointments</button>
+                    <button class="btn-danger" onclick="cancelBooking()">Cancel Appointment</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="Appdetails.js"></script>
+</body>
+</html>
