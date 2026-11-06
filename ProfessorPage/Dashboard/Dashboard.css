@@ -13,7 +13,7 @@ body {
     overflow-x: hidden;
 }
 
-/* Sidebar Layout matching standard dimensions */
+/* Sidebar Layout */
 .sidebar {
     width: 260px;
     background-color: #ffffff;
@@ -127,7 +127,7 @@ body {
     font-size: 0.9rem;
 }
 
-/* Metric Cards Layout */
+/* Cards Grid */
 .cards-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -198,89 +198,19 @@ body {
     opacity: 0.9;
 }
 
-.queue-badge {
-    background-color: rgba(255, 255, 255, 0.2);
-    border-radius: 10px;
+.light-btn {
+    background-color: #ffffff !important;
+    color: #2b6cb0 !important;
+    border: none;
     padding: 10px 18px;
-    text-align: center;
-}
-
-.queue-badge span {
-    display: block;
-    font-size: 1.2rem;
-    font-weight: bold;
-}
-
-.queue-badge label {
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-/* Split Grid for Monitor and Links */
-.split-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 20px;
-}
-
-.table-wrapper {
-    width: 100%;
-    overflow-x: auto;
-}
-
-.admin-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.admin-table th, .admin-table td {
-    padding: 12px 14px;
-    text-align: left;
-    border-bottom: 1px solid #e2e8f0;
-    font-size: 0.85rem;
-}
-
-.admin-table th {
-    background-color: #f7fafc;
-    color: #4a5568;
-    font-weight: 600;
-}
-
-.status-badge {
-    padding: 4px 8px;
-    border-radius: 6px;
-    font-size: 0.75rem;
-    font-weight: 600;
-}
-
-.status-badge.active { background-color: #c6f6d5; color: #22543d; }
-.status-badge.waiting { background-color: #feebc8; color: #744210; }
-
-.quick-links {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.btn-primary-link {
-    width: 100%;
-    padding: 12px 16px;
-    background-color: #ebf8ff;
-    color: #2b6cb0;
-    border: 1px solid #bee3f8;
     border-radius: 8px;
     font-size: 0.9rem;
     font-weight: 600;
-    text-align: left;
     cursor: pointer;
-    transition: all 0.2s ease;
 }
 
-.btn-primary-link:hover {
-    background-color: #2b6cb0;
-    color: #ffffff;
-    border-color: #2b6cb0;
+.light-btn:hover {
+    background-color: #ebf8ff !important;
 }
 
 /* Desktop Defaults for Mobile Elements */
@@ -348,7 +278,9 @@ body {
         pointer-events: auto;
     }
 
-    .split-grid {
-        grid-template-columns: 1fr;
+    .queue-banner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
     }
 }
