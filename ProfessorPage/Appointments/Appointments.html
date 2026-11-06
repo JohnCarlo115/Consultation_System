@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultation University - Faculty Portal</title>
+    <link rel="stylesheet" href="Appointments.css">
+</head>
+
+<body>
+    <!-- Dark Overlay for Mobile Slide-out Drawer -->
+    <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+    <!-- Sidebar Navigation -->
+    <div class="sidebar" id="sidebar">
+        <div class="brand">
+            <span>🎓 Consultation Univ.</span>
+            <!-- Close icon for mobile menu -->
+            <button class="close-sidebar-btn" onclick="toggleSidebar()">✕</button>
+        </div>
+        <ul class="nav-menu">
+            <li class="nav-item active"><a href="../Dashboard/Dashboard.html">🏠 Home</a></li>
+            <li class="nav-item"><a href="../Availability/MyAvailability.html">📅 Availability</a></li>
+            <li class="nav-item"><a href="../Appointments/Appointments.html">📨 Appointments</a></li>
+            <li class="nav-item"><a href="../Queue/QueueMng.html">👨‍🎓 Consultation Queue</a></li>
+            <li class="nav-item"><a href="../History/History.html">📋 Consultation History</a></li>
+            <li class="nav-item" style="margin-top: auto;"><a href="../../login/login.html">🚪 Logout</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+        <!-- Topbar -->
+        <div class="topbar">
+            <div class="topbar-left">
+                <button class="hamburger-btn" onclick="toggleSidebar()">☰</button>
+                <strong>Faculty Consultation Portal</strong>
+            </div>
+            <div class="user-profile">
+                <span>John Cedric Asprer</span>
+                <div class="avatar">JA</div>
+            </div>
+        </div>
+
+        <div class="dashboard-container">
+            <div class="header-title">
+                <h1>Appointments</h1>
+                <p>View and monitor student consultation requests and their appointment details.</p>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="cards-grid">
+                <div class="cards approval-card">
+                    <h2 class="card-number">2</h2>
+                    <p class="card-desc">Waiting for Approval</p>
+                    <a href="../Appointments/AppointmentReq/AppointmentReq.html" class="view-btn">View Requests</a>
+                </div>
+
+                <div class="cards">
+                    <div class="search-container">
+                        <input type="text" class="search" placeholder="Search...">
+                    </div>
+                </div>
+            </div>
+
+            <div class="cards-grid">
+                <div class="card" id="appointmentTable">
+                    <div class="card-title"><strong>Appointment 1</strong></div>
+                    <div class="card-prof"><strong>Student Name:</strong> Jake</div>
+                    <div class="card-date"><strong>Date:</strong> November 7, 2026</div>
+                    <div class="card-time"><strong>Time:</strong> 11:30 AM</div>
+                    <div class="card-topic"><strong>Topic:</strong> Understanding Data Integration and System Architecture.</div>
+                </div>
+
+                <div class="card" id="appointmentTable">
+                    <div class="card-title"><strong>Appointment 2</strong></div>
+                    <div class="card-prof"><strong>Student Name:</strong> Justin</div>
+                    <div class="card-date"><strong>Date:</strong> November 15, 2026</div>
+                    <div class="card-time"><strong>Time:</strong> 3:00 PM</div>
+                    <div class="card-topic"><strong>Topic:</strong> Understanding VLANs and Inter-VLAN Routing.</div>
+                </div>
+
+                <div class="card" id="appointmentTable">
+                    <div class="card-title"><strong>Appointment 3</strong></div>
+                    <div class="card-prof"><strong>Student Name:</strong> Jeremy</div>
+                    <div class="card-date"><strong>Date:</strong> November 28, 2026</div>
+                    <div class="card-time"><strong>Time:</strong> 4:30 PM</div>
+                    <div class="card-topic"><strong>Topic:</strong> Guidance on Preparing for Upcoming Examinations.</div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </div>
+    <script src="Appointments.js"></script>
+</body>
