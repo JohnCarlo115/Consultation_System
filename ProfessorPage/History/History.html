@@ -1,29 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consultation University - Faculty Portal</title>
+    <title>Consultation University - Consultation History</title>
     <link rel="stylesheet" href="History.css">
 </head>
-
 <body>
+
     <!-- Dark Overlay for Mobile Slide-out Drawer -->
     <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
     <!-- Sidebar Navigation -->
     <div class="sidebar" id="sidebar">
         <div class="brand">
             <span>🎓 Consultation Univ.</span>
-            <!-- Close icon for mobile menu -->
             <button class="close-sidebar-btn" onclick="toggleSidebar()">✕</button>
         </div>
         <ul class="nav-menu">
-            <li class="nav-item active"><a href="../Dashboard/Dashboard.html">🏠 Home</a></li>
-            <li class="nav-item"><a href="../Availability/MyAvailability.html">📅 Availability</a></li>
-            <li class="nav-item"><a href="../Appointments/Appointments.html">📨 Appointments</a></li>
-            <li class="nav-item"><a href="../Queue/QueueMng.html">👨‍🎓 Consultation Queue</a></li>
-            <li class="nav-item"><a href="../History/History.html">📋 Consultation History</a></li>
+            <li class="nav-item"><a href="../Dashboard/Dashboard.html">📊 Dashboard</a></li>
+            <li class="nav-item"><a href="../Availability/MyAvailability.html">📅 My Availability</a></li>
+            <li class="nav-item"><a href="../Appointments/Appointments.html">📋 Appointment Requests</a></li>
+            <li class="nav-item"><a href="../ProfQueue/Profqueue.html">⏳ Queue Management</a></li>
+            <li class="nav-item active"><a href="History.html">📜 Consultation History</a></li>
             <li class="nav-item" style="margin-top: auto;"><a href="../../login/login.html">🚪 Logout</a></li>
         </ul>
     </div>
@@ -34,59 +33,89 @@
         <div class="topbar">
             <div class="topbar-left">
                 <button class="hamburger-btn" onclick="toggleSidebar()">☰</button>
-                <strong>Faculty Consultation Portal</strong>
+                <strong>Faculty Portal</strong>
             </div>
             <div class="user-profile">
-                <span>John Cedric Asprer</span>
-                <div class="avatar">JA</div>
+                <span>Prof. Santos</span>
+                <div class="avatar">PS</div>
             </div>
         </div>
 
         <div class="dashboard-container">
             <div class="header-title">
                 <h1>Consultation History</h1>
-                <p>Keep track of your consultation records and review your previous appointments anytime.</p>
+                <p>Search, filter, and review archived records of past completed consultation sessions.</p>
             </div>
 
-                        <!-- Search Bar -->
-            <div class="cards-grid">
-                <div class="cards">
-                    <div class="search-container">
-                        <input type="text" class="search" placeholder="Search...">
-                    </div>
+            <!-- Search & Filtering Bar (3.2.6.2) -->
+            <div class="card action-card">
+                <div class="filter-controls">
+                    <input type="text" id="history-search" placeholder="Search by student name, topic, or ID..." onkeyup="filterHistory()">
+                    <select id="history-type-filter" onchange="filterHistory()">
+                        <option value="">All Consultation Types</option>
+                        <option value="Academic Consultation">Academic Consultation</option>
+                        <option value="Capstone Project">Capstone Project</option>
+                        <option value="Career Guidance">Career Guidance</option>
+                    </select>
                 </div>
             </div>
 
-            <div class="cards-grid">
-
-                <div class="card" id="historytable">
-                    <div><strong>Professor Name:</strong> <span class="professorname">John Cedric</span></div>
-                    <div><strong>Student Name:</strong> <span class="name">Mark Anthony</span></div>
-                    <div><strong>Date & Time:</strong> <span class="date">October 2, 2026</span> <span class="time">10:30 AM</span></div>
-                    <div><strong>Consultation Topic:</strong> <span class="topic"> Troubleshooting JavaScript DOM Manipulation.</span></div>
-                    <button class="downloadBtn" type="button">Download PDF</button>
-                </div>
-
-                <div class="card" id="historytable">
-                    <div><strong>Professor Name:</strong> <span class="professorname">John Cedric</span></div>
-                    <div><strong>Name:</strong> <span class="name">Joshua</span></div>
-                    <div><strong>Date & Time:</strong> <span class="date">October 7, 2026</span> <span class="time">11:00 AM</span></div>
-                    <div><strong>Consultation Topic:</strong> <span class="topic"> Discussion on System Analysis and Design.</span></div>
-                    <button class="downloadBtn" type="button">Download PDF</button>
-                </div>
-
-                <div class="card" id="historytable">
-                    <div><strong>Professor Name:</strong> <span class="professorname">John Cedric</span></div>
-                    <div><strong>Name:</strong> <span class="name">Jasmine</span></div>
-                    <div><strong>Date & Time:</strong> <span class="date">September 27, 2026</span> <span class="time">1:00 PM</span></div>
-                    <div><strong>Consultation Topic:</strong> <span class="topic"> Assistance with Java Programming and Debugging.</span></div>
-                    <button class="downloadBtn" type="button">Download PDF</button>
+            <!-- Past Consultation Records Table (3.2.6.1) -->
+            <div class="card" style="margin-top: 20px;">
+                <div class="card-title">Completed Consultation Logs</div>
+                <div class="table-wrapper">
+                    <table class="admin-table" id="history-records-table">
+                        <thead>
+                            <tr>
+                                <th>Student Name</th>
+                                <th>Consultation Type</th>
+                                <th>Date Completed</th>
+                                <th>Time Slot</th>
+                                <th>Topic / Session Notes</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Juan Dela Cruz</strong></td>
+                                <td>Academic Consultation</td>
+                                <td>2026-10-10</td>
+                                <td>10:30 AM - 11:15 AM</td>
+                                <td>Web Development Project Architecture & Front-end Layout</td>
+                                <td><span class="status-badge active">Completed</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Ana Reyes</strong></td>
+                                <td>Academic Consultation</td>
+                                <td>2026-10-24</td>
+                                <td>02:00 PM - 02:45 PM</td>
+                                <td>Database SQL Subqueries & Performance Indexing</td>
+                                <td><span class="status-badge active">Completed</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Mark Banalan</strong></td>
+                                <td>Capstone Project</td>
+                                <td>2026-10-28</td>
+                                <td>10:00 AM - 11:00 AM</td>
+                                <td>Capstone System Architecture & Class Diagram Review</td>
+                                <td><span class="status-badge active">Completed</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>John Carlo S. Cruz</strong></td>
+                                <td>Academic Consultation</td>
+                                <td>2026-11-02</td>
+                                <td>01:30 PM - 02:15 PM</td>
+                                <td>Cisco Packet Tracer Subnetting & Multi-Router Configuration</td>
+                                <td><span class="status-badge active">Completed</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
+
         </div>
     </div>
-    <!-- jsPDF Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
     <script src="History.js"></script>
 </body>
+</html>
