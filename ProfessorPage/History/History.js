@@ -1,4 +1,4 @@
-// Function to toggle slide-out sidebar menu on mobile
+// Toggle slide-out sidebar menu on mobile
 function toggleSidebar() {
     const sidebar = document.getElementById('sidebar');
     const overlay = document.querySelector('.sidebar-overlay');
@@ -7,7 +7,7 @@ function toggleSidebar() {
     if (overlay) overlay.classList.toggle('active');
 }
 
-// Search and Filter Past Consultation Records (3.2.6.2)
+// Search and Filter Past Consultation Records
 function filterHistory() {
     const searchVal = document.getElementById('history-search').value.toLowerCase();
     const typeVal = document.getElementById('history-type-filter').value;
@@ -21,10 +21,6 @@ function filterHistory() {
         const matchesSearch = studentName.includes(searchVal) || topic.includes(searchVal);
         const matchesType = typeVal === '' || type === typeVal;
 
-        if (matchesSearch && matchesType) {
-            row.style.display = '';
-        } else {
-            row.style.display = 'none';
-        }
+        row.style.display = (matchesSearch && matchesType) ? '' : 'none';
     });
 }

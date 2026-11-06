@@ -1,7 +1,7 @@
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -127,18 +127,18 @@ body {
     font-size: 0.9rem;
 }
 
-/* Cards & Actions */
+/* Card Components */
 .card {
     background-color: #ffffff;
     border: 1px solid #e2e8f0;
     border-radius: 12px;
-    padding: 24px;
+    padding: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
 }
 
 .card-title {
-    font-size: 1.1rem;
-    font-weight: 600;
+    font-size: 1rem;
+    font-weight: bold;
     color: #2d3748;
     margin-bottom: 16px;
 }
@@ -209,13 +209,14 @@ body {
     font-weight: 600;
 }
 
-/* Desktop Defaults for Mobile Drawer */
+/* Desktop Defaults for Mobile Elements */
 .hamburger-btn,
 .close-sidebar-btn,
 .sidebar-overlay {
     display: none;
 }
 
+/* Mobile Slide-out Drawer Styles */
 @media screen and (max-width: 768px) {
     .hamburger-btn {
         display: block !important;
