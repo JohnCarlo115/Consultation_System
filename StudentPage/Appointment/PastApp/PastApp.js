@@ -1,50 +1,78 @@
-// searching students
-const searchInput = document.querySelector(".search");
+// Download PDF for each appointment
+document.querySelectorAll(".downloadBtn").forEach(button => {
+    button.addEventListener("click", function () {
+        const card = this.closest(".card");
 
-searchInput.addEventListener("input", function() {
-    const searchValue = this.value.toLowerCase();
+        const profName = card.querySelector(".professorname") ? card.querySelector(".professorname").textContent : "N/A";
+        const studentName = card.querySelector(".name").textContent;
+        const date = card.querySelector(".date").textContent;
+        const time = card.querySelector(".time").textContent;
+        const topic = card.querySelector(".topic").textContent;
 
-    const rows = document.querySelectorAll(
-        "#appointmentTable tr"
-    );
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
 
-    rows.forEach(row => {
-        const text = row.innerText.toLowerCase();
+        // Header
+        doc.setFont("times", "bold");
+        doc.setFontSize(20);
+        doc.text("COLLEGE OF COMPUTER STUDIES", 105, 20, { align: "center" });
 
-        if (text.includes(searchValue)) {
-            row.style.display = "";
-        } else {
-            row.style.display = "none";
-        }
+        doc.setFont("times", "normal");
+        doc.setFontSize(10);
+        doc.text("STUDENT-FACULTY CONSULTATION SCHEDULING SYSTEM", 105, 28, { align: "center" });
+
+        // Divider
+        doc.line(20, 35, 190, 35);
+
+        // Consultation Details
+        doc.setFont("times", "bold");
+        doc.setFontSize(13);
+        doc.text("CONSULTATION RECORD SUMMARY", 20, 50);
+
+        doc.setFont("times", "normal");
+        doc.setFontSize(12);
+        doc.text("Professor Name: " + profName, 25, 65);
+        doc.text("Student Name: " + studentName, 25, 75);
+        doc.text("Date: " + date, 25, 85);
+        doc.text("Time Slot: " + time, 25, 95);
+        
+        // Wrapped Topic text for long strings
+        const splitTopic = doc.splitTextToSize("Topic: " + topic, 160);
+        doc.text(splitTopic, 25, 105);
+
+        // Footer
+        doc.line(20, 265, 190, 265);
+        doc.setFontSize(10);
+        doc.text("Consultation University • Official Record", 105, 273, { align: "center" });
+
+        // Save PDF
+        doc.save("Past_Appointment_" + studentName.replace(/\s+/g, '_') + "_" + date.replace(/\s+/g, '_') + ".pdf");
     });
 });
 
-
-const menuItems = document.querySelectorAll(".sidebar li");
-
-menuItems.forEach(item => {
-    item.addEventListener("click", function() {
-
-        menuItems.forEach(menu => {
-            menu.classList.remove("active");
-        });
-
-        this.classList.add("active");
-    });
-});
-
-console.log("Consultation University Dashboard Loaded!");
-
-// Function to toggle slide-out sidebar menu on mobile
+// Sidebar Mobile Toggle
 function toggleSidebar() {
     const sidebar = document.getElementById('sidebar');
     const overlay = document.querySelector('.sidebar-overlay');
 
-    if (sidebar) {
-        sidebar.classList.toggle('open');
-    }
+    if (sidebar) sidebar.classList.toggle('open');
+    if (overlay) overlay.classList.toggle('active');
+}
 
-    if (overlay) {
-        overlay.classList.toggle('active');
-    }
+// Live Search Filter
+const searchInput = document.querySelector(".search");
+if (searchInput) {
+    searchInput.addEventListener("input", function() {
+        const searchValue = this.value.toLowerCase();
+        const cards = document.querySelectorAll(".historytable");
+
+        cards.forEach(card => {
+            const text = card.innerText.toLowerCase();
+            if (text.includes(searchValue)) {
+                card.style.display = "";
+            } else {
+                card.style.display = "none";
+            }
+        });
+    });
 }

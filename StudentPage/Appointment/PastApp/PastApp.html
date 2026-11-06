@@ -1,22 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consultation University - Student Portal</title>
+    <title>Consultation University - Past Appointments</title>
     <link rel="stylesheet" href="PastApp.css">
 </head>
-
 <body>
 
     <!-- Dark Overlay for Mobile Slide-out Drawer -->
     <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
     <!-- Sidebar Navigation -->
     <div class="sidebar" id="sidebar">
         <div class="brand">
             <span>🎓 Consultation Univ.</span>
-            <!-- Close icon for mobile menu -->
             <button class="close-sidebar-btn" onclick="toggleSidebar()">✕</button>
         </div>
         <ul class="nav-menu">
@@ -46,76 +44,51 @@
         <div class="dashboard-container">
             <div class="header-title">
                 <h1>Past Appointments</h1>
-                <p>View your completed consultations, including professor details, appointment dates, and times.</p>
+                <p>Keep track of your consultation records and review or download your previous appointments anytime.</p>
             </div>
 
             <!-- Search Bar -->
-            <div class="search-container">
-                <input
-                    type="text"
-                    class="search"
-                    placeholder="Search..."
-                >
+            <div class="cards-grid">
+                <div class="cards">
+                    <div class="search-container">
+                        <input type="text" class="search" placeholder="Search appointments...">
+                    </div>
+                </div>
             </div>
 
-            <!-- Appointment Table -->
-            <div class="table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Professor</th>
-                            <th>Consultation Type</th>
-                            <th>Date</th>
-                            <th>Time</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
+            <!-- Appointment Cards Grid -->
+            <div class="cards-grid">
 
-                    <tbody id="appointmentTable">
+                <div class="card historytable">
+                    <div><strong>Professor Name:</strong> <span class="professorname">Prof. Santos</span></div>
+                    <div><strong>Student Name:</strong> <span class="name">John Carlo S. Cruz</span></div>
+                    <div><strong>Date & Time:</strong> <span class="date">October 10, 2026</span> <span class="time">10:30 AM</span></div>
+                    <div><strong>Consultation Topic:</strong> <span class="topic">Troubleshooting JavaScript DOM Manipulation.</span></div>
+                    <button class="downloadBtn" type="button">Download PDF</button>
+                </div>
 
-                        <tr class="card">
-                            <td>Prof. Santos</td>
-                            <td>Academic Consultation</td>
-                            <td>October 10, 2026</td>
-                            <td>10:30 AM</td>
-                            <td>
-                                <button class="view-btn"
-                                    data-student="Juan Dela Cruz">
-                                    View
-                                </button>
-                            </td>
-                        </tr>
+                <div class="card historytable">
+                    <div><strong>Professor Name:</strong> <span class="professorname">Prof. Kim</span></div>
+                    <div><strong>Student Name:</strong> <span class="name">John Carlo S. Cruz</span></div>
+                    <div><strong>Date & Time:</strong> <span class="date">October 28, 2026</span> <span class="time">10:00 AM</span></div>
+                    <div><strong>Consultation Topic:</strong> <span class="topic">Discussion on System Analysis and Database Design.</span></div>
+                    <button class="downloadBtn" type="button">Download PDF</button>
+                </div>
 
-                        <tr class="card">
-                            <td>Prof. Kim</td>
-                            <td>Capstone Project</td>
-                            <td>October 28, 2026</td>
-                            <td>10:00 AM</td>
-                            <td>
-                                <button class="view-btn"
-                                    data-student="Maria Santos">
-                                    View
-                                </button>
-                            </td>
-                        </tr>
+                <div class="card historytable">
+                    <div><strong>Professor Name:</strong> <span class="professorname">Prof. Dungo</span></div>
+                    <div><strong>Student Name:</strong> <span class="name">John Carlo S. Cruz</span></div>
+                    <div><strong>Date & Time:</strong> <span class="date">September 29, 2026</span> <span class="time">01:00 PM</span></div>
+                    <div><strong>Consultation Topic:</strong> <span class="topic">Assistance with Cisco Packet Tracer Subnetting & Multi-Router Setup.</span></div>
+                    <button class="downloadBtn" type="button">Download PDF</button>
+                </div>
 
-                        <tr class="card">
-                            <td>Prof. Dungo</td>
-                            <td>Career Guidance</td>
-                            <td>September 29, 2026</td>
-                            <td>1:00 PM</td>
-                            <td>
-                                <button class="view-btn"
-                                    data-student="Pedro Garcia">
-                                    View
-                                </button>
-                            </td>
-                        </tr>
-
-                    </tbody>
-                </table>
             </div>
         </div>
     </div>
+
+    <!-- jsPDF Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="PastApp.js"></script>
 </body>
+</html>
