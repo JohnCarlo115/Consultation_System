@@ -1,29 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consultation University - Faculty Portal</title>
-    <link rel="stylesheet" href="Appointments.css">
+    <title>Consultation University - Appointment Requests</title>
+    <link rel="stylesheet" href="Requests.css">
 </head>
-
 <body>
+
     <!-- Dark Overlay for Mobile Slide-out Drawer -->
     <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
     <!-- Sidebar Navigation -->
     <div class="sidebar" id="sidebar">
         <div class="brand">
             <span>🎓 Consultation Univ.</span>
-            <!-- Close icon for mobile menu -->
             <button class="close-sidebar-btn" onclick="toggleSidebar()">✕</button>
         </div>
         <ul class="nav-menu">
-            <li class="nav-item active"><a href="../Dashboard/Dashboard.html">🏠 Home</a></li>
-            <li class="nav-item"><a href="../Availability/MyAvailability.html">📅 Availability</a></li>
-            <li class="nav-item"><a href="../Appointments/Appointments.html">📨 Appointments</a></li>
-            <li class="nav-item"><a href="../Queue/QueueMng.html">👨‍🎓 Consultation Queue</a></li>
-            <li class="nav-item"><a href="../History/History.html">📋 Consultation History</a></li>
+            <li class="nav-item"><a href="../ProfDashboard/ProfDashboard.html">📊 Dashboard</a></li>
+            <li class="nav-item"><a href="../Availability/Availability.html">📅 My Availability</a></li>
+            <li class="nav-item active"><a href="Requests.html">📋 Appointment Requests</a></li>
+            <li class="nav-item"><a href="../Queue/ProfQueue.html">⏳ Queue Management</a></li>
+            <li class="nav-item"><a href="../History/ProfHistory.html">📜 Consultation History</a></li>
             <li class="nav-item" style="margin-top: auto;"><a href="../../login/login.html">🚪 Logout</a></li>
         </ul>
     </div>
@@ -34,63 +33,126 @@
         <div class="topbar">
             <div class="topbar-left">
                 <button class="hamburger-btn" onclick="toggleSidebar()">☰</button>
-                <strong>Faculty Consultation Portal</strong>
+                <strong>Faculty Portal</strong>
             </div>
             <div class="user-profile">
-                <span>John Cedric Asprer</span>
-                <div class="avatar">JA</div>
+                <span>Prof. Santos</span>
+                <div class="avatar">PS</div>
             </div>
         </div>
 
         <div class="dashboard-container">
             <div class="header-title">
-                <h1>Appointments</h1>
-                <p>View and monitor student consultation requests and their appointment details.</p>
+                <h1>Appointment Requests</h1>
+                <p>Review, filter, approve, decline, or adjust incoming student consultation bookings.</p>
             </div>
 
-            <!-- Search Bar -->
-            <div class="cards-grid">
-                <div class="cards approval-card">
-                    <h2 class="card-number">2</h2>
-                    <p class="card-desc">Waiting for Approval</p>
-                    <a href="../Appointments/AppointmentReq/AppointmentReq.html" class="view-btn">View Requests</a>
-                </div>
-
-                <div class="cards">
-                    <div class="search-container">
-                        <input type="text" class="search" placeholder="Search...">
-                    </div>
+            <!-- Search & Filter Controls -->
+            <div class="card action-card">
+                <div class="filter-controls">
+                    <input type="text" id="req-search" placeholder="Search student name or topic..." onkeyup="filterRequests()">
+                    <select id="req-type-filter" onchange="filterRequests()">
+                        <option value="">All Consultation Types</option>
+                        <option value="Academic Consultation">Academic Consultation</option>
+                        <option value="Capstone Project">Capstone Project</option>
+                        <option value="Career Guidance">Career Guidance</option>
+                    </select>
+                    <input type="date" id="req-date-filter" onchange="filterRequests()">
                 </div>
             </div>
 
-            <div class="cards-grid">
-                <div class="card" id="appointmentTable">
-                    <div class="card-title"><strong>Appointment 1</strong></div>
-                    <div class="card-prof"><strong>Student Name:</strong> Jake</div>
-                    <div class="card-date"><strong>Date:</strong> November 7, 2026</div>
-                    <div class="card-time"><strong>Time:</strong> 11:30 AM</div>
-                    <div class="card-topic"><strong>Topic:</strong> Understanding Data Integration and System Architecture.</div>
+            <!-- Pending Requests Roster  -->
+            <div class="card" style="margin-top: 20px;">
+                <div class="card-title">Pending Student Booking Requests</div>
+                <div class="table-wrapper">
+                    <table class="admin-table" id="requests-table">
+                        <thead>
+                            <tr>
+                                <th>Student Name</th>
+                                <th>Type</th>
+                                <th>Requested Date</th>
+                                <th>Time Slot</th>
+                                <th>Topic / Notes</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Mark Banalan</strong></td>
+                                <td>Capstone Project</td>
+                                <td>2026-11-10</td>
+                                <td>10:30 AM - 11:30 AM</td>
+                                <td>System Architecture Review & UML</td>
+                                <td>
+                                    <div class="action-btn-group">
+                                        <button class="btn-action approve" onclick="approveRequest(this)">Approve</button>
+                                        <button class="btn-action modify" onclick="openModifyModal(this)">Reschedule</button>
+                                        <button class="btn-action decline" onclick="declineRequest(this)">Decline</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Ana Reyes</strong></td>
+                                <td>Academic Consultation</td>
+                                <td>2026-11-12</td>
+                                <td>02:15 PM - 03:00 PM</td>
+                                <td>Database Query Optimization & Indexing</td>
+                                <td>
+                                    <div class="action-btn-group">
+                                        <button class="btn-action approve" onclick="approveRequest(this)">Approve</button>
+                                        <button class="btn-action modify" onclick="openModifyModal(this)">Reschedule</button>
+                                        <button class="btn-action decline" onclick="declineRequest(this)">Decline</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Juan Dela Cruz</strong></td>
+                                <td>Career Guidance</td>
+                                <td>2026-11-14</td>
+                                <td>09:00 AM - 09:30 AM</td>
+                                <td>Web Development Internship Advisory</td>
+                                <td>
+                                    <div class="action-btn-group">
+                                        <button class="btn-action approve" onclick="approveRequest(this)">Approve</button>
+                                        <button class="btn-action modify" onclick="openModifyModal(this)">Reschedule</button>
+                                        <button class="btn-action decline" onclick="declineRequest(this)">Decline</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-
-                <div class="card" id="appointmentTable">
-                    <div class="card-title"><strong>Appointment 2</strong></div>
-                    <div class="card-prof"><strong>Student Name:</strong> Justin</div>
-                    <div class="card-date"><strong>Date:</strong> November 15, 2026</div>
-                    <div class="card-time"><strong>Time:</strong> 3:00 PM</div>
-                    <div class="card-topic"><strong>Topic:</strong> Understanding VLANs and Inter-VLAN Routing.</div>
-                </div>
-
-                <div class="card" id="appointmentTable">
-                    <div class="card-title"><strong>Appointment 3</strong></div>
-                    <div class="card-prof"><strong>Student Name:</strong> Jeremy</div>
-                    <div class="card-date"><strong>Date:</strong> November 28, 2026</div>
-                    <div class="card-time"><strong>Time:</strong> 4:30 PM</div>
-                    <div class="card-topic"><strong>Topic:</strong> Guidance on Preparing for Upcoming Examinations.</div>
-                </div>
-
             </div>
+
         </div>
     </div>
+
+    <!-- Schedule Modification Modal  -->
+    <div class="modal-overlay" id="modifyModal">
+        <div class="modal-card">
+            <h2>Modify Requested Schedule</h2>
+            <form id="modifyForm" onsubmit="saveModifiedSchedule(event)">
+                <input type="hidden" id="editRowIndex" value="">
+                <div class="form-group">
+                    <label>Student Name</label>
+                    <input type="text" id="modStudentName" readonly style="background:#edf2f7;">
+                </div>
+                <div class="form-group">
+                    <label>New Consultation Date</label>
+                    <input type="date" id="modDate" required>
+                </div>
+                <div class="form-group">
+                    <label>New Time Slot</label>
+                    <input type="text" id="modTime" required placeholder="e.g. 01:00 PM - 01:45 PM">
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn-secondary" onclick="closeModifyModal()">Cancel</button>
+                    <button type="submit" class="btn-primary">Approve with New Time</button>
+                </div>
+            </form>
+        </div>
     </div>
-    <script src="Appointments.js"></script>
+
+    <script src="Requests.js"></script>
 </body>
+</html>

@@ -7,7 +7,7 @@ function toggleSidebar() {
     if (overlay) overlay.classList.toggle('active');
 }
 
-// Open and Close Modal for Slot Addition (3.2.3.2)
+// Open and Close Modal for Slot Addition
 function openSlotModal() {
     document.getElementById('slotModal').classList.add('active');
 }
@@ -16,7 +16,7 @@ function closeSlotModal() {
     document.getElementById('slotModal').classList.remove('active');
 }
 
-// Save New Slot to Table (3.2.3.2 & 3.2.3.3)
+// Save New Slot to Table 
 function saveSlot(event) {
     event.preventDefault();
 
@@ -46,7 +46,7 @@ function deleteSlot(btn) {
     btn.closest('tr').remove();
 }
 
-// Add Blocked / Special Dates (3.2.3.5)
+// Add Blocked / Special Dates
 function addBlockedDate() {
     const dateInput = document.getElementById('block-date-input');
     const reasonInput = document.getElementById('block-reason-input');

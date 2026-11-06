@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultation University - Queue Management</title>
+    <link rel="stylesheet" href="ProfQueue.css">
+</head>
+<body>
+
+    <!-- Dark Overlay for Mobile Slide-out Drawer -->
+    <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+    <!-- Sidebar Navigation -->
+    <div class="sidebar" id="sidebar">
+        <div class="brand">
+            <span>🎓 Consultation Univ.</span>
+            <button class="close-sidebar-btn" onclick="toggleSidebar()">✕</button>
+        </div>
+        <ul class="nav-menu">
+            <li class="nav-item"><a href="../ProfDashboard/ProfDashboard.html">📊 Dashboard</a></li>
+            <li class="nav-item"><a href="../Availability/Availability.html">📅 My Availability</a></li>
+            <li class="nav-item"><a href="../Requests/Requests.html">📋 Appointment Requests</a></li>
+            <li class="nav-item active"><a href="ProfQueue.html">⏳ Queue Management</a></li>
+            <li class="nav-item"><a href="../History/ProfHistory.html">📜 Consultation History</a></li>
+            <li class="nav-item" style="margin-top: auto;"><a href="../../login/login.html">🚪 Logout</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+        <!-- Topbar -->
+        <div class="topbar">
+            <div class="topbar-left">
+                <button class="hamburger-btn" onclick="toggleSidebar()">☰</button>
+                <strong>Faculty Portal</strong>
+            </div>
+            <div class="user-profile">
+                <span>Prof. Santos</span>
+                <div class="avatar">PS</div>
+            </div>
+        </div>
+
+        <div class="dashboard-container">
+            <div class="header-title">
+                <h1>Queue Management</h1>
+                <p>Monitor real-time student queues, call upcoming students, and view wait-time traffic analytics.</p>
+            </div>
+
+            <!-- Active Queue Caller Banner -->
+            <div class="queue-banner">
+                <div class="queue-info">
+                    <h2>Live Consultation Queue Control</h2>
+                    <p id="current-serving-display">Now Serving: <strong>Juan Dela Cruz (#1)</strong> • Web Development Advisory Session</p>
+                </div>
+                <button class="btn-primary light-btn" onclick="callNextStudent()">▶ Call Next Student</button>
+            </div>
+
+            <!-- Queue Statistics & Traffic Overview -->
+            <div class="cards-grid" style="margin-top: 20px;">
+                <div class="card">
+                    <div class="card-title">Queue Traffic Status</div>
+                    <div class="status-badge active" style="font-size: 0.95rem; width: fit-content; margin-top: 4px;">Moderate Traffic</div>
+                    <div class="card-desc" style="margin-top: 8px;">Normal flow of student walk-ins</div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">Estimated Wait Time</div>
+                    <div class="card-counter">~12 mins</div>
+                    <div class="card-desc">Average session duration per student</div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">Sessions Completed Today</div>
+                    <div class="card-counter" id="completed-count">5</div>
+                    <div class="card-desc">Students served today</div>
+                </div>
+            </div>
+
+            <!-- Active Consultation Queue Table -->
+            <div class="card" style="margin-top: 20px;">
+                <div class="card-title">Active Live Consultation Queue</div>
+                <div class="table-wrapper">
+                    <table class="admin-table" id="queue-roster-table">
+                        <thead>
+                            <tr>
+                                <th>Queue #</th>
+                                <th>Student Name</th>
+                                <th>Topic / Subject</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>#1</strong></td>
+                                <td>Juan Dela Cruz</td>
+                                <td>Web Development Advisory Session</td>
+                                <td><span class="status-badge active">In Session</span></td>
+                                <td><button class="btn-action edit" onclick="completeSession(this)">Complete Session</button></td>
+                            </tr>
+                            <tr>
+                                <td><strong>#2</strong></td>
+                                <td>John Carlo S. Cruz</td>
+                                <td>Networking Protocol & ACL Deployment</td>
+                                <td><span class="status-badge waiting">Waiting</span></td>
+                                <td><button class="btn-action edit" disabled style="opacity:0.5; cursor:not-allowed;">In Line</button></td>
+                            </tr>
+                            <tr>
+                                <td><strong>#3</strong></td>
+                                <td>Ana Reyes</td>
+                                <td>Database Query Indexing & Optimization</td>
+                                <td><span class="status-badge waiting">Waiting</span></td>
+                                <td><button class="btn-action edit" disabled style="opacity:0.5; cursor:not-allowed;">In Line</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="ProfQueue.js"></script>
+</body>
+</html>

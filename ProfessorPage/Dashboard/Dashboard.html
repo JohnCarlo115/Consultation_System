@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consultation University - Faculty Portal</title>
-    <link rel="stylesheet" href="Professor.css">
+    <title>Consultation University - Admin Dashboard</title>
+    <link rel="stylesheet" href="Dashboard_2.css">
 </head>
-
 <body>
+
     <!-- Dark Overlay for Mobile Slide-out Drawer -->
     <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
     <!-- Sidebar Navigation -->
     <div class="sidebar" id="sidebar">
         <div class="brand">
             <span>🎓 Consultation Univ.</span>
-            <!-- Close icon for mobile menu -->
             <button class="close-sidebar-btn" onclick="toggleSidebar()">✕</button>
         </div>
         <ul class="nav-menu">
-            <li class="nav-item active"><a href="../Dashboard/Dashboard.html">🏠 Home</a></li>
-            <li class="nav-item"><a href="../Availability/MyAvailability.html">📅 Book Consultation</a></li>
-            <li class="nav-item"><a href="../">📋 My Appointments</a></li>
-            <li class="nav-item"><a href="../">⏳ Consultation Queue</a></li>
+            <li class="nav-item active"><a href="../Dashboard/Dashboard_2.html">📊 Dashboard</a></li>
+            <li class="nav-item"><a href="../SystemOverview/SO.html">🖥️ System Overview</a></li>
+            <li class="nav-item"><a href="../StudentManagement/Stud.html">👨‍🎓 Student Management</a></li>
+            <li class="nav-item"><a href="../ProfessorManagement/Prof.html">👨‍🏫 Professor Management</a></li>
+            <li class="nav-item"><a href="../ConsultSchedManagement/Consult.html">📅 Schedule Management</a></li>
             <li class="nav-item" style="margin-top: auto;"><a href="../../LOGIN/login.html">🚪 Logout</a></li>
         </ul>
     </div>
@@ -33,95 +33,129 @@
         <div class="topbar">
             <div class="topbar-left">
                 <button class="hamburger-btn" onclick="toggleSidebar()">☰</button>
-                <strong>Faculty Consultation Portal</strong>
+                <strong>Admin Portal</strong>
             </div>
             <div class="user-profile">
-                <span>John Cedric Asprer</span>
-                <div class="avatar">JA</div>
+                <span>System Administrator</span>
+                <div class="avatar">SA</div>
             </div>
         </div>
 
         <div class="dashboard-container">
             <div class="header-title">
-                <h1>Welcome, Faculty Member!</h1>
-                <p>View consultation requests and manage your upcoming appointments.</p>
+                <h1>Welcome, System Admin!</h1>
+                <p>Complete system analytics, live consultation queue activity, and quick management actions.</p>
             </div>
+
+            <!-- Primary Metrics Grid -->
+            <div class="cards-grid">
+                <div class="card clickable" onclick="window.location.href='../StudentManagement/Stud.html'">
+                    <div class="card-icon">👨‍🎓</div>
+                    <div class="card-title">Total Students</div>
+                    <div class="card-counter">482</div>
+                    <div class="card-desc">Registered student accounts</div>
+                </div>
+
+                <div class="card clickable" onclick="window.location.href='../ProfessorManagement/Prof.html'">
+                    <div class="card-icon">👨‍🏫</div>
+                    <div class="card-title">Faculty Members</div>
+                    <div class="card-counter">24</div>
+                    <div class="card-desc">Active teaching instructors</div>
+                </div>
+
+                <div class="card clickable" onclick="window.location.href='../ConsultSchedManagement/Consult.html'">
+                    <div class="card-icon">📅</div>
+                    <div class="card-title">Today's Appointments</div>
+                    <div class="card-counter">18</div>
+                    <div class="card-desc">12 completed • 6 pending</div>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">⏳</div>
+                    <div class="card-title">Active Live Queues</div>
+                    <div class="card-counter">4</div>
+                    <div class="card-desc">Operational consultation rooms</div>
+                </div>
+            </div>
+
+            <!-- System Health & Status Banner -->
+            <div class="queue-banner">
+                <div class="queue-info">
+                    <h2>System Operational Status</h2>
+                    <p>All core modules active • Database sync OK • Real-time queue server online</p>
+                </div>
+                <div class="queue-badge">
+                    <span>Healthy</span>
+                    <label>System Health</label>
+                </div>
+            </div>
+
+            <!-- Recent System Activity & Quick Actions Split View -->
+            <div class="split-grid">
+                <!-- Today's Live Consultation Monitor -->
+                <div class="card">
+                    <div class="card-title">Real-Time Consultation Monitor</div>
+                    <div class="table-wrapper">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Faculty</th>
+                                    <th>Queue #</th>
+                                    <th>Student</th>
+                                    <th>Topic</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Prof. Santos</strong></td>
+                                    <td>#1</td>
+                                    <td>Juan Dela Cruz</td>
+                                    <td>Web Development Advisory</td>
+                                    <td><span class="status-badge active">In Session</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Prof. Kim</strong></td>
+                                    <td>#2</td>
+                                    <td>Mark Banalan</td>
+                                    <td>Database Query Optimization</td>
+                                    <td><span class="status-badge active">In Session</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Prof. Dungo</strong></td>
+                                    <td>#1</td>
+                                    <td>Ana Reyes</td>
+                                    <td>Cisco Packet Tracer Subnetting</td>
+                                    <td><span class="status-badge waiting">Waiting</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Quick Admin Controls -->
+                <div class="card">
+                    <div class="card-title">Administrative Short Cuts</div>
+                    <div class="quick-links">
+                        <button class="btn-primary-link" onclick="window.location.href='../StudentManagement/Stud.html'">
+                            ➕ Add New Student Record
+                        </button>
+                        <button class="btn-primary-link" onclick="window.location.href='../ProfessorManagement/Prof.html'">
+                            👨‍🏫 Manage Faculty Directory
+                        </button>
+                        <button class="btn-primary-link" onclick="window.location.href='../ConsultSchedManagement/Consult.html'">
+                            📆 Modify Consultation Slots
+                        </button>
+                        <button class="btn-primary-link" onclick="window.location.href='../SystemOverview/SO.html'">
+                            🖥️ System Diagnostics
+                        </button>
+                    </div>
+                </div>
+            </div>
+
         </div>
-        <!-- Dashboard Feature Cards -->
-        <div class="cards-grid">
-            <div class="card">
-                <div class="card-icon">📅</div>
-                <h3 class="card-title">Today's Appointments</h3>
-                <h2 class="card-number">5</h2>
-                <p class="card-desc">Scheduled consultations today</p>
-            </div>
+    </div>
 
-            <div class="card">
-                <div class="card-icon">📩</div>
-                <h3 class="card-title">Pending Requests</h3>
-                <h2 class="card-number">3</h2>
-                <p class="card-desc">Requests waiting for approval</p>
-            </div>
-
-            <div class="card">
-                <div class="card-icon">👥</div>
-                <h3 class="card-title">Students in Queue</h3>
-                <h2 class="card-number">4</h2>
-                <p class="card-desc">Students currently waiting</p>
-            </div>
-        </div>
-
-        <!-- Quick Actions -->
-        <div class="section-heading">
-            <h2>Quick Actions</h2>
-        </div>
-
-        <div class="cards-grid">
-
-            <div class="card">
-                <div class="card-icon">🗓️</div>
-                <h3 class="card-title">My Availability</h3>
-                <p class="card-desc">
-                    Set your available consultation days and time slots.
-                </p>
-                <a href="../Availability/MyAvailability.html" class="action-btn" data-action="My Availability">
-                    Manage Availability
-                </a>
-            </div>
-
-            <div class="card">
-                <div class="card-icon">📨</div>
-                <h3 class="card-title">Appointment Requests</h3>
-                <p class="card-desc">
-                    Review, approve, or decline student consultation requests.
-                </p>
-                <a href="../Appointments/Appointments.html" class="action-btn" data-action="Appointment Requests">
-                    View Requests
-                </a>
-            </div>
-
-            <div class="card">
-                <div class="card-icon">👨‍🎓</div>
-                <h3 class="card-title">Queue Management</h3>
-                <p class="card-desc">
-                    Monitor the active queue and call the next student.
-                </p>
-                <a href="../Queue/Queue.html" class="action-btn" data-action="Queue Management">
-                    Manage Queue
-                </a>
-            </div>
-
-            <div class="card">
-                <div class="card-icon">📋</div>
-                <h3 class="card-title">Consultation History</h3>
-                <p class="card-desc">
-                    View previous and completed student consultations.
-                </p>
-                <a href="../Records/Records.html" class="action-btn" data-action="Consultation History">
-                    View Records
-                </a>
-            </div>
-        </div>
-        <script src="Professor.js"></script>
-
+    <script src="Dashboard_2.js"></script>
 </body>
+</html>
