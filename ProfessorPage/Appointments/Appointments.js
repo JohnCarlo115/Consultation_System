@@ -1,6 +1,8 @@
 let currentRowToDecline = null;
 
-// Open Decline Modal pop-up window
+// ==========================================
+// 1. DECLINE MODAL FUNCTIONS
+// ==========================================
 function declineRequest(button) {
     currentRowToDecline = button.closest('tr');
     const modal = document.getElementById('declineModal');
@@ -10,14 +12,12 @@ function declineRequest(button) {
     if (modal) modal.style.display = 'flex';
 }
 
-// Close Decline Modal
 function closeDeclineModal() {
     currentRowToDecline = null;
     const modal = document.getElementById('declineModal');
     if (modal) modal.style.display = 'none';
 }
 
-// Confirm Decline and remove row from table
 function confirmDeclineRequest() {
     const reason = document.getElementById('declineReasonInput').value.trim();
 
@@ -33,17 +33,9 @@ function confirmDeclineRequest() {
     closeDeclineModal();
 }
 
-// Approve Request directly
-function approveRequest(button) {
-    const row = button.closest('tr');
-    const studentName = row.cells[0].innerText.trim();
-
-    if (confirm(`Approve consultation request for ${studentName}?`)) {
-        row.remove();
-    }
-}
-
-// Open Reschedule Modal
+// ==========================================
+// 2. RESCHEDULE (MODIFY) MODAL FUNCTIONS
+// ==========================================
 function openModifyModal(button) {
     const row = button.closest('tr');
     const studentName = row.cells[0].innerText.trim();
@@ -59,13 +51,11 @@ function openModifyModal(button) {
     if (modal) modal.style.display = 'flex';
 }
 
-// Close Reschedule Modal
 function closeModifyModal() {
     const modal = document.getElementById('modifyModal');
     if (modal) modal.style.display = 'none';
 }
 
-// Save Modified Schedule
 function saveModifiedSchedule(event) {
     event.preventDefault();
     const rowIndex = document.getElementById('editRowIndex').value;
@@ -83,7 +73,18 @@ function saveModifiedSchedule(event) {
     alert("Schedule updated successfully!");
 }
 
-// Sidebar Drawer Toggle Handler
+// ==========================================
+// 3. APPROVE & NAVIGATION
+// ==========================================
+function approveRequest(button) {
+    const row = button.closest('tr');
+    const studentName = row.cells[0].innerText.trim();
+
+    if (confirm(`Approve consultation request for ${studentName}?`)) {
+        row.remove();
+    }
+}
+
 function toggleSidebar() {
     const sidebar = document.getElementById('sidebar');
     const overlay = document.querySelector('.sidebar-overlay');
