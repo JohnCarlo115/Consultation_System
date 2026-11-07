@@ -420,3 +420,23 @@ body {
         border-radius: 12px;
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
     }
+    .modal-overlay {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background: rgba(0, 0, 0, 0.45) !important;
+    justify-content: center !important;
+    align-items: center !important;
+    z-index: 99999 !important;
+    }
+
+    .modal-card {
+        background: #ffffff !important;
+        width: 90% !important;
+        max-width: 480px !important;
+        padding: 24px !important;
+        border-radius: 12px !important;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2) !important;
+    }

@@ -1,23 +1,27 @@
 let currentRowToDecline = null;
 
-// ==========================================
-// 1. DECLINE MODAL FUNCTIONS
-// ==========================================
+// Open Decline Modal (Forces display over CSS)
 function declineRequest(button) {
     currentRowToDecline = button.closest('tr');
     const modal = document.getElementById('declineModal');
     const input = document.getElementById('declineReasonInput');
     
     if (input) input.value = '';
-    if (modal) modal.style.display = 'flex';
+    if (modal) {
+        modal.style.setProperty('display', 'flex', 'important');
+    }
 }
 
+// Close Decline Modal
 function closeDeclineModal() {
     currentRowToDecline = null;
     const modal = document.getElementById('declineModal');
-    if (modal) modal.style.display = 'none';
+    if (modal) {
+        modal.style.setProperty('display', 'none', 'important');
+    }
 }
 
+// Confirm Decline & Remove Row
 function confirmDeclineRequest() {
     const reason = document.getElementById('declineReasonInput').value.trim();
 
@@ -33,9 +37,7 @@ function confirmDeclineRequest() {
     closeDeclineModal();
 }
 
-// ==========================================
-// 2. RESCHEDULE (MODIFY) MODAL FUNCTIONS
-// ==========================================
+// Open Reschedule Modal (Forces display over CSS)
 function openModifyModal(button) {
     const row = button.closest('tr');
     const studentName = row.cells[0].innerText.trim();
@@ -48,14 +50,20 @@ function openModifyModal(button) {
     document.getElementById('editRowIndex').value = row.rowIndex;
 
     const modal = document.getElementById('modifyModal');
-    if (modal) modal.style.display = 'flex';
+    if (modal) {
+        modal.style.setProperty('display', 'flex', 'important');
+    }
 }
 
+// Close Reschedule Modal
 function closeModifyModal() {
     const modal = document.getElementById('modifyModal');
-    if (modal) modal.style.display = 'none';
+    if (modal) {
+        modal.style.setProperty('display', 'none', 'important');
+    }
 }
 
+// Save Reschedule Changes
 function saveModifiedSchedule(event) {
     event.preventDefault();
     const rowIndex = document.getElementById('editRowIndex').value;
@@ -73,9 +81,7 @@ function saveModifiedSchedule(event) {
     alert("Schedule updated successfully!");
 }
 
-// ==========================================
-// 3. APPROVE & NAVIGATION
-// ==========================================
+// Approve Button Direct Action
 function approveRequest(button) {
     const row = button.closest('tr');
     const studentName = row.cells[0].innerText.trim();
@@ -85,6 +91,7 @@ function approveRequest(button) {
     }
 }
 
+// Sidebar Drawer Toggle
 function toggleSidebar() {
     const sidebar = document.getElementById('sidebar');
     const overlay = document.querySelector('.sidebar-overlay');
