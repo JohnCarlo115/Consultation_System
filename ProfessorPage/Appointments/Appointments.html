@@ -127,6 +127,23 @@
         </div>
     </div>
 
+        <!-- Approve Confirmation Modal -->
+    <div class="modal-overlay" id="approveModal" style="display: none;">
+        <div class="modal-card">
+            <h3 style="color: #22543d; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+                <span>✅</span> Approve Consultation Request
+            </h3>
+            <p style="color: #4a5568; font-size: 0.95rem; margin-bottom: 16px;">
+                Are you sure you want to approve the consultation request for <strong id="approveStudentName" style="color: #2b6cb0;">Student</strong>? This will add them to the queue management list.
+            </p>
+            
+            <div class="modal-actions" style="display: flex; justify-content: flex-end; gap: 10px;">
+                <button type="button" class="btn-secondary" onclick="closeApproveModal()" style="background: #e2e8f0; color: #4a5568; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-weight: 600;">Cancel</button>
+                <button type="button" class="btn-primary" onclick="confirmApproveRequest()" style="background: #38a169; color: #ffffff; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-weight: 600;">Confirm Approval</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Reschedule Modal -->
     <div class="modal-overlay" id="modifyModal" style="display: none;">
         <div class="modal-card">
