@@ -89,14 +89,40 @@ function saveModifiedSchedule(event) {
     alert("Schedule updated successfully!");
 }
 
-// Approve Button Action
-function approveRequest(button) {
-    const row = button.closest('tr');
-    const studentName = row.cells[0].innerText.trim();
+let currentRowToApprove = null;
 
-    if (confirm(`Approve consultation request for ${studentName}?`)) {
-        row.remove();
+// Open Custom Approve Modal
+function approveRequest(button) {
+    currentRowToApprove = button.closest('tr');
+    const studentName = currentRowToApprove.cells[0].innerText.trim();
+    
+    document.getElementById('approveStudentName').innerText = studentName;
+    
+    const modal = document.getElementById('approveModal');
+    if (modal) {
+        modal.style.setProperty('display', 'flex', 'important');
+        modal.style.setProperty('opacity', '1', 'important');
+        modal.style.setProperty('visibility', 'visible', 'important');
     }
+}
+
+// Close Approve Modal
+function closeApproveModal() {
+    currentRowToApprove = null;
+    const modal = document.getElementById('approveModal');
+    if (modal) {
+        modal.style.setProperty('display', 'none', 'important');
+        modal.style.setProperty('opacity', '0', 'important');
+        modal.style.setProperty('visibility', 'hidden', 'important');
+    }
+}
+
+// Confirm Approval & Remove Row
+function confirmApproveRequest() {
+    if (currentRowToApprove) {
+        currentRowToApprove.remove();
+    }
+    closeApproveModal();
 }
 
 // Sidebar Drawer Toggle
