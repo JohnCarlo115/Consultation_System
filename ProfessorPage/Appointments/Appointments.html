@@ -61,7 +61,7 @@
                 </div>
             </div>
 
-            <!-- Pending Requests Roster  -->
+            <!-- Pending Requests Roster -->
             <div class="card" style="margin-top: 20px;">
                 <div class="card-title">Pending Student Booking Requests</div>
                 <div class="table-wrapper">
@@ -127,32 +127,7 @@
         </div>
     </div>
 
-    <!-- Schedule Modification Modal  -->
-    <div class="modal-overlay" id="modifyModal">
-        <div class="modal-card">
-            <h2>Modify Requested Schedule</h2>
-            <form id="modifyForm" onsubmit="saveModifiedSchedule(event)">
-                <input type="hidden" id="editRowIndex" value="">
-                <div class="form-group">
-                    <label>Student Name</label>
-                    <input type="text" id="modStudentName" readonly style="background:#edf2f7;">
-                </div>
-                <div class="form-group">
-                    <label>New Consultation Date</label>
-                    <input type="date" id="modDate" required>
-                </div>
-                <div class="form-group">
-                    <label>New Time Slot</label>
-                    <input type="text" id="modTime" required placeholder="e.g. 01:00 PM - 01:45 PM">
-                </div>
-                <div class="modal-actions">
-                    <button type="button" class="btn-secondary" onclick="closeModifyModal()">Cancel</button>
-                    <button type="submit" class="btn-primary">Approve with New Time</button>
-                </div>
-            </form>
-        </div>
-    </div>
-    <!-- Schedule Modification Modal (Reschedule) -->
+    <!-- Reschedule Modal -->
     <div class="modal-overlay" id="modifyModal" style="display: none;">
         <div class="modal-card">
             <h2>Modify Requested Schedule</h2>

@@ -1,6 +1,6 @@
 let currentRowToDecline = null;
 
-// Open Decline Modal (Forces display over CSS)
+// Open Decline Modal
 function declineRequest(button) {
     currentRowToDecline = button.closest('tr');
     const modal = document.getElementById('declineModal');
@@ -9,6 +9,8 @@ function declineRequest(button) {
     if (input) input.value = '';
     if (modal) {
         modal.style.setProperty('display', 'flex', 'important');
+        modal.style.setProperty('opacity', '1', 'important');
+        modal.style.setProperty('visibility', 'visible', 'important');
     }
 }
 
@@ -18,6 +20,8 @@ function closeDeclineModal() {
     const modal = document.getElementById('declineModal');
     if (modal) {
         modal.style.setProperty('display', 'none', 'important');
+        modal.style.setProperty('opacity', '0', 'important');
+        modal.style.setProperty('visibility', 'hidden', 'important');
     }
 }
 
@@ -37,7 +41,7 @@ function confirmDeclineRequest() {
     closeDeclineModal();
 }
 
-// Open Reschedule Modal (Forces display over CSS)
+// Open Reschedule Modal
 function openModifyModal(button) {
     const row = button.closest('tr');
     const studentName = row.cells[0].innerText.trim();
@@ -52,6 +56,8 @@ function openModifyModal(button) {
     const modal = document.getElementById('modifyModal');
     if (modal) {
         modal.style.setProperty('display', 'flex', 'important');
+        modal.style.setProperty('opacity', '1', 'important');
+        modal.style.setProperty('visibility', 'visible', 'important');
     }
 }
 
@@ -60,6 +66,8 @@ function closeModifyModal() {
     const modal = document.getElementById('modifyModal');
     if (modal) {
         modal.style.setProperty('display', 'none', 'important');
+        modal.style.setProperty('opacity', '0', 'important');
+        modal.style.setProperty('visibility', 'hidden', 'important');
     }
 }
 
@@ -81,7 +89,7 @@ function saveModifiedSchedule(event) {
     alert("Schedule updated successfully!");
 }
 
-// Approve Button Direct Action
+// Approve Button Action
 function approveRequest(button) {
     const row = button.closest('tr');
     const studentName = row.cells[0].innerText.trim();
