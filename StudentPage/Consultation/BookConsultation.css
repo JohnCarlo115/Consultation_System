@@ -198,41 +198,47 @@ body {
     margin-bottom: 16px;
 }
 
-.booking-form label {
-    display: block;
-    margin-bottom: 6px;
-    font-weight: 600;
-    color: #2d3748;
-    font-size: 0.9rem;
+.form-group {
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
 }
 
-.booking-form input, 
-.booking-form select, 
-.booking-form textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #cbd5e0;
-    border-radius: 8px;
-    font-size: 0.95rem;
-    box-sizing: border-box;
+.form-group label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 5px;
 }
 
-.booking-form button {
-    background-color: #2b6cb0;
-    color: #ffffff;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 8px;
-    font-size: 0.95rem;
-    font-weight: 600;
-    cursor: pointer;
-    width: 100%;
-    transition: background-color 0.2s ease;
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 9px 12px;
+  border: 1px solid #cbd5e0;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  transition: border-color 0.2s;
 }
 
-.booking-form button:hover {
-    background-color: #2c5282;
+.form-group input.invalid,
+.form-group select.invalid,
+.form-group textarea.invalid {
+  border-color: #e53e3e;
+  background-color: #fff5f5;
+}
+
+.error-text {
+  color: #e53e3e;
+  font-size: 0.78rem;
+  margin-top: 4px;
+  min-height: 14px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
 }
 
 .placeholder-text {
@@ -348,4 +354,42 @@ body {
         visibility: visible;
         pointer-events: auto;
     }
+}
+.notification-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ebf8ff;
+  border-left: 4px solid #3182ce;
+  color: #2c5282;
+  padding: 12px 18px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 0.92rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.notif-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.notif-badge {
+  background-color: #3182ce;
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+}
+
+.notif-close {
+  background: none;
+  border: none;
+  color: #2c5282;
+  font-size: 1.3rem;
+  cursor: pointer;
+  line-height: 1;
 }

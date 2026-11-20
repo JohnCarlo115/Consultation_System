@@ -43,3 +43,40 @@ function toggleSidebar() {
 document.addEventListener('DOMContentLoaded', () => {
     loadQueueData();
 });
+function dismissNotification() {
+  const bar = document.getElementById('global-notification-bar');
+  if (bar) bar.style.display = 'none';
+}
+
+function triggerNotification(message, type = 'info') {
+  const bar = document.getElementById('global-notification-bar');
+  const msgEl = document.getElementById('notif-message');
+  if (!bar || !msgEl) return;
+
+  msgEl.textContent = message;
+  bar.style.display = 'flex';
+
+  if (type === 'error') {
+    bar.style.backgroundColor = '#fff5f5';
+    bar.style.borderLeftColor = '#e53e3e';
+    bar.style.color = '#9b2c2c';
+  } else if (type === 'success') {
+    bar.style.backgroundColor = '#f0fff4';
+    bar.style.borderLeftColor = '#38a169';
+    bar.style.color = '#276749';
+  } else {
+    bar.style.backgroundColor = '#ebf8ff';
+    bar.style.borderLeftColor = '#3182ce';
+    bar.style.color = '#2c5282';
+  }
+}
+function updateSessionTodayLabel() {
+  const sessionEl = document.getElementById('session-today-label');
+  if (!sessionEl) return;
+
+  const options = { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' };
+  const todayFormatted = new Date().toLocaleDateString('en-US', options);
+
+  sessionEl.textContent = `Today, ${todayFormatted} • Active Session: 10:00 AM – 12:00 PM`;
+}
+document.addEventListener('DOMContentLoaded', updateSessionTodayLabel);

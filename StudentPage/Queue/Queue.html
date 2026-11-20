@@ -32,6 +32,13 @@
 
         <!-- Topbar -->
         <div class="topbar">
+                <div id="global-notification-bar" class="notification-banner">
+                    <div class="notif-content">
+                        <span class="notif-badge">UPDATE</span>
+                        <span id="notif-message">Your consultation with Prof. Santos (Today, Nov 20, 2026) is currently #2 in queue.</span>
+                    </div>
+                    <button type="button" class="notif-close" onclick="dismissNotification()" aria-label="Dismiss notification">&times;</button>
+                    </div>
             <div class="topbar-left">
                 <button class="hamburger-btn" onclick="toggleSidebar()">☰</button>
                 <strong>Student Portal</strong>
@@ -48,17 +55,18 @@
                 <p>Check your current live position in the queue and estimated waiting time.</p>
             </div>
 
-            <!-- Active Queue Banner -->
-            <div class="queue-banner" id="active-queue-banner">
-                <div class="queue-info">
-                    <h2 id="queue-prof">Prof. Santos</h2>
-                    <p id="queue-topic">Web Development Advisory Session</p>
-                    <small id="queue-time">Estimated Wait Time: ~15 mins</small>
-                </div>
-                <div class="queue-badge">
-                    <span id="queue-pos">#2</span>
-                    <label>Current Position</label>
-                </div>
+           <div class="queue-hero-banner">
+            <div>
+                <h2>Prof. Santos</h2>
+                <p>Web Development Advisory Session</p>
+                <p id="session-today-label" class="session-badge">
+                <!-- Populated automatically by JS below -->
+                </p>
+            </div>
+            <div class="queue-rank-box">
+                <span class="rank-num">#2</span>
+                <span class="rank-label">CURRENT POSITION</span>
+            </div>
             </div>
 
             <!-- Live Queue List Card -->
