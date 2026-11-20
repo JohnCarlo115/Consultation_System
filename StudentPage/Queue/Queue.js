@@ -78,5 +78,6 @@ function updateSessionTodayLabel() {
   const todayFormatted = new Date().toLocaleDateString('en-US', options);
 
   sessionEl.textContent = `Today, ${todayFormatted} • Active Session: 10:00 AM – 12:00 PM`;
+  sessionEl.style.color = '#000000';
 }
 document.addEventListener('DOMContentLoaded', updateSessionTodayLabel);
