@@ -31,16 +31,10 @@
     <div class="main-content">
         <!-- Topbar -->
         <div class="topbar">
-                <div id="global-notification-bar" class="notification-banner">
-                    <div class="notif-content">
-                        <span class="notif-badge">UPDATE</span>
-                        <span id="notif-message">Your consultation with Prof. Santos (Today, Nov 20, 2026) is currently #2 in queue.</span>
-                    </div>
-                    <button type="button" class="notif-close" onclick="dismissNotification()" aria-label="Dismiss notification">&times;</button>
-                    </div>
             <div class="topbar-left">
                 <button class="hamburger-btn" onclick="toggleSidebar()">☰</button>
-                <strong>Student Portal</strong></div>
+                <strong>Student Portal</strong>
+            </div>
             <div class="user-profile">
                 <span>John Carlo S. Cruz</span>
                 <div class="avatar">JC</div>
@@ -48,6 +42,15 @@
         </div>
 
         <div class="dashboard-container">
+            <!-- Global Live Notification Bar (Placed cleanly inside dashboard-container) -->
+            <div id="global-notification-bar" class="notification-banner">
+                <div class="notif-content">
+                    <span class="notif-badge">UPDATE</span>
+                    <span id="notif-message">Your consultation with Prof. Santos (Today, Nov 21, 2026) is currently #2 in queue.</span>
+                </div>
+                <button type="button" class="notif-close" onclick="dismissNotification()" aria-label="Dismiss notification">&times;</button>
+            </div>
+
             <div class="header-title">
                 <h1>Book a Consultation</h1>
                 <p>Select a professor and choose an available date and time for your consultation.</p>
@@ -87,63 +90,65 @@
                         </div>
                     </div>
                 </div>
-                <!-- Step 2: Choose Schedule & Details -->
-                <div class="booking-card">
-                    <h3>2. Consultation Details</h3>
+
+                <!-- Step 2: Consultation Details -->
+                <div class="card">
+                    <div class="card-icon">⏳</div>
+                    <div class="card-title">2. Consultation Details</div>
                     <form id="ccs-consultation-form" novalidate>
                         <div class="form-group">
-                        <label for="student-id">Student Number *</label>
-                        <input type="text" id="student-id" placeholder="e.g., 2024-00101" required>
-                        <small class="error-text" id="err-student-id"></small>
+                            <label for="student-id">Student Number *</label>
+                            <input type="text" id="student-id" placeholder="e.g., 2024-00101" required>
+                            <small class="error-text" id="err-student-id"></small>
                         </div>
 
                         <div class="form-group">
-                        <label for="course-section">Course, Year & Section *</label>
-                        <input type="text" id="course-section" placeholder="e.g., BSIT-NA3B" required>
-                        <small class="error-text" id="err-course-section"></small>
+                            <label for="course-section">Course, Year & Section *</label>
+                            <input type="text" id="course-section" placeholder="e.g., BSIT-NA3B" required>
+                            <small class="error-text" id="err-course-section"></small>
                         </div>
 
                         <div class="form-group">
-                        <label for="subject-code">Subject Code / Course Title *</label>
-                        <input type="text" id="subject-code" placeholder="e.g., IT-WD301 - Web Development" required>
-                        <small class="error-text" id="err-subject-code"></small>
+                            <label for="subject-code">Subject Code / Course Title *</label>
+                            <input type="text" id="subject-code" placeholder="e.g., IT-WD301 - Web Development" required>
+                            <small class="error-text" id="err-subject-code"></small>
                         </div>
 
                         <div class="form-group">
-                        <label for="consult-type">Consultation Type *</label>
-                        <select id="consult-type" required>
-                            <option value="">-- Select Consultation Type --</option>
-                            <option value="Academic Advising">Academic Advising</option>
-                            <option value="Capstone / Project Review">Capstone / Project Review</option>
-                            <option value="Lecture / Lab Clarification">Lecture / Lab Clarification</option>
-                            <option value="Grade / Requirement Inquiry">Grade / Requirement Inquiry</option>
-                        </select>
-                        <small class="error-text" id="err-consult-type"></small>
+                            <label for="consult-type">Consultation Type *</label>
+                            <select id="consult-type" required>
+                                <option value="">-- Select Consultation Type --</option>
+                                <option value="Academic Advising">Academic Advising</option>
+                                <option value="Capstone / Project Review">Capstone / Project Review</option>
+                                <option value="Lecture / Lab Clarification">Lecture / Lab Clarification</option>
+                                <option value="Grade / Requirement Inquiry">Grade / Requirement Inquiry</option>
+                            </select>
+                            <small class="error-text" id="err-consult-type"></small>
                         </div>
 
                         <div class="form-row">
-                        <div class="form-group">
-                            <label for="consult-date">Preferred Date *</label>
-                            <input type="date" id="consult-date" required>
-                            <small class="error-text" id="err-consult-date"></small>
+                            <div class="form-group">
+                                <label for="consult-date">Preferred Date *</label>
+                                <input type="date" id="consult-date" required>
+                                <small class="error-text" id="err-consult-date"></small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="consult-time">Preferred Time *</label>
+                                <input type="time" id="consult-time" required>
+                                <small class="error-text" id="err-consult-time"></small>
+                            </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="consult-time">Preferred Time *</label>
-                            <input type="time" id="consult-time" required>
-                            <small class="error-text" id="err-consult-time"></small>
-                        </div>
-                        </div>
-
-                        <div class="form-group">
-                        <label for="consult-topic">Nature / Purpose of Consultation *</label>
-                        <textarea id="consult-topic" rows="3" placeholder="Briefly describe your concern or topic..." required></textarea>
-                        <small class="error-text" id="err-consult-topic"></small>
+                            <label for="consult-topic">Nature / Purpose of Consultation *</label>
+                            <textarea id="consult-topic" rows="3" placeholder="Briefly describe your concern or topic..." required></textarea>
+                            <small class="error-text" id="err-consult-topic"></small>
                         </div>
 
-                        <button type="submit" class="btn-primary">Submit Consultation Form</button>
+                        <button type="submit" class="btn-book">Submit Consultation Form</button>
                     </form>
-                    </div>
+                </div>
 
                 <!-- Step 3: Confirmation Status -->
                 <div class="card">
@@ -151,7 +156,7 @@
                     <div class="card-title">3. Confirmation Status</div>
                     <div id="confirmation-message" class="confirmation-message">
                         <div class="placeholder-text">
-                            <p>📋 Fill out the form details and click <strong>Book Consultation</strong> to review your confirmed appointment details here.</p>
+                            <p>📋 Fill out the form details and click <strong>Submit Consultation Form</strong> to review your confirmed appointment details here.</p>
                         </div>
                     </div>
                 </div>
